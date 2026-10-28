@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\RequireRecentPasswordConfirmation;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
@@ -13,7 +14,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::livewire('settings/security', 'pages::settings.security')
         ->middleware([
-            'password.confirm',
+            RequireRecentPasswordConfirmation::class,
         ])
         ->name('security.edit');
 });
