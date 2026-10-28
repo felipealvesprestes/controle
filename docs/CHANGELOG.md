@@ -4,6 +4,14 @@ Mudanças visíveis para quem usa o sistema, por versão. Formato baseado em [Ke
 
 ## [Não publicado]
 
+### Segurança
+
+- Ações de 2FA exigem confirmação de senha recente também nas atualizações do Livewire (A-01).
+- Trocar o e-mail exige a senha atual; e-mails são salvos em minúsculas (A-02).
+- Trocar ou redefinir a senha encerra as sessões abertas em outros lugares (A-03).
+- Link de redefinição de senha sempre usa o endereço oficial do sistema (A-04).
+- "Esqueci a senha" responde igual para qualquer e-mail e limita 5 pedidos por minuto (A-05).
+
 ### Adicionado
 
 - Documentação inicial do produto: visão, regras de negócio, funcionalidades, telas, arquitetura, fiscal e deploy.

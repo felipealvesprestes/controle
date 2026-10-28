@@ -66,12 +66,12 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 
 | ID | Controle | Verificação | Versão | Status |
 |---|---|---|---|---|
-| SEC-31 | Rate limit no login e no 2FA (por e-mail + IP) e na borda (Cloudflare) | Teste + regra na Cloudflare | v0.1 | 🚧 (aplicação ✅, borda 📋) |
+| SEC-31 | Rate limit no login, no 2FA e no esqueci a senha (por IP) e na borda (Cloudflare) | Teste + regra na Cloudflare | v0.1 | 🚧 (aplicação ✅, borda 📋) |
 | SEC-32 | Turnstile no login e na recuperação de senha | Teste com token inválido | v0.9 | 📋 |
 | SEC-33 | 2FA obrigatório para administradores | Teste | v0.9 | 📋 |
-| SEC-34 | Reautenticação (senha) para ações sensíveis: mudar permissões, enviar certificado, emitir/cancelar nota | Teste | v0.2 | 📋 |
-| SEC-35 | Sessão regenerada no login, expira por inatividade (administrador: 30 min), encerrada ao desativar usuário (RN-19) | Teste | v0.2 | 📋 |
-| SEC-36 | Mensagens que não revelam se o e-mail existe (login, recuperação, convite) | Teste | v0.1 | 📋 |
+| SEC-34 | Reautenticação (senha) para ações sensíveis: 2FA, troca de e-mail, mudar permissões, enviar certificado, emitir/cancelar nota | Teste | v0.2 | 🚧 (2FA e e-mail ✅) |
+| SEC-35 | Sessão regenerada no login, encerrada quando a senha muda, expira por inatividade (administrador: 30 min), encerrada ao desativar usuário (RN-19) | Teste | v0.2 | 🚧 (login e troca de senha ✅) |
+| SEC-36 | Mensagens que não revelam se o e-mail existe (login, recuperação, convite) | Teste | v0.1 | 🚧 (login e recuperação ✅, convite 📋) |
 | SEC-37 | Cloudflare Access (e-mail + código) na frente de `/admin` como segunda barreira | Revisão de configuração | v0.9 | 📋 |
 
 ## A08 — Software or Data Integrity Failures
