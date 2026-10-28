@@ -19,7 +19,7 @@ A planilha guardava duração como fração de dia e valores como `float`, geran
 
 ## Alternativas consideradas
 
-- **`decimal` no banco + `bcmath`** — funciona, mas inteiros são mais simples, rápidos e portáveis entre SQLite e Postgres.
+- **`decimal` no banco + `bcmath`** — funciona, mas inteiros são mais simples, rápidos e portáveis entre bancos.
 - **Biblioteca `moneyphp/money`** — boa, mas é uma dependência para um caso de moeda única. Reavaliar se surgir multi-moeda.
 
 ## Consequências

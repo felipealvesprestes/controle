@@ -1,6 +1,6 @@
 # Deploy e operação
 
-Infraestrutura alvo da v1.0. Decisões: [ADR-0001](../arquitetura/adr/0001-stack.md), [ADR-0003](../arquitetura/adr/0003-sqlite-com-litestream.md), [ADR-0010](../arquitetura/adr/0010-cloudflare-na-borda.md). Antes de ir para produção, a infraestrutura passa pelo portão de [segurança](../seguranca/README.md).
+Infraestrutura alvo da v1.0. Decisões: [ADR-0001](../arquitetura/adr/0001-stack.md), [ADR-0012](../arquitetura/adr/0012-mysql-e-sail.md), [ADR-0010](../arquitetura/adr/0010-cloudflare-na-borda.md). Antes de ir para produção, a infraestrutura passa pelo portão de [segurança](../seguranca/README.md).
 
 ## Visão geral
 
@@ -12,20 +12,21 @@ flowchart LR
         T[cloudflared] --> C
         C[app: FrankenPHP<br/>Caddy + PHP + Laravel]
         W[worker: queue + scheduler]
-        L[litestream]
-        V[(volume: database.sqlite<br/>storage/app/private)]
+        V[(volume: storage/app/private)]
         C --- V
         W --- V
-        L --- V
     end
-    L -->|replicação contínua| S[(DO Spaces<br/>bucket privado)]
+    C -->|VPC privada| M[(MySQL gerenciado DO<br/>backups + PITR)]
+    W --> M
+    V -.->|cópia diária| S[(DO Spaces<br/>bucket privado)]
     G[GitHub Actions] -->|SSH: pull + migrate| D
 ```
 
 | Item | Escolha | Custo aprox. |
 |---|---|---|
 | Servidor | Droplet básico 1 vCPU / 1 GB | US$ 6/mês |
-| Backup do banco | DO Spaces (bucket privado) | US$ 5/mês |
+| Banco | MySQL 8 gerenciado da DO, só na VPC | US$ 15/mês |
+| Backup de arquivos | DO Spaces (bucket privado) | US$ 5/mês |
 | Borda, HTTPS, WAF | Cloudflare (plano gratuito; avaliar Pro na v0.9 para o OWASP Core Ruleset) | US$ 0–25/mês |
 | Acesso ao servidor | Cloudflare Tunnel; SSH só de IPs autorizados | — |
 | Domínio | Subdomínio (ex.: `horas.placedev.com.br`) | — |
@@ -36,10 +37,9 @@ flowchart LR
 |---|---|---|
 | `app` | imagem própria baseada em `dunglas/frankenphp` | Servidor web e PHP |
 | `worker` | mesma imagem | `php artisan queue:work` e `schedule:work` |
-| `litestream` | `litestream/litestream` | Replica `database.sqlite` para o Spaces |
 | `cloudflared` | `cloudflare/cloudflared` | Tunnel de saída até a Cloudflare; único caminho de entrada HTTP |
 
-O volume `data` guarda `database/database.sqlite` e `storage/app/private` (XML/PDF das notas, certificado).
+O volume `data` guarda `storage/app/private` (XML/PDF das notas, certificado). O banco fica no MySQL gerenciado.
 
 ## Pipeline
 
@@ -49,13 +49,13 @@ O volume `data` guarda `database/database.sqlite` e `storage/app/private` (XML/P
 
 ## Segredos
 
-Ficam no `.env` do servidor, nunca no repositório: `APP_KEY`, credenciais do Spaces, senha do certificado A1, credenciais de e-mail.
+Ficam no `.env` do servidor, nunca no repositório: `APP_KEY`, credenciais do banco e do Spaces, senha do certificado A1, credenciais de e-mail.
 
 ## Backup e restauração
 
-- Litestream replica continuamente, retenção de 30 dias.
+- MySQL gerenciado: backups diários e recuperação em ponto no tempo (retenção do plano).
 - Arquivos de `storage/app/private` vão para o Spaces por tarefa agendada diária.
-- **Teste de restauração** a cada versão maior: subir um ambiente limpo, `litestream restore`, abrir o sistema e conferir os totais do último período fechado. Registrar data e resultado abaixo.
+- **Teste de restauração** a cada versão maior: restaurar o backup do MySQL num cluster novo, abrir o sistema e conferir os totais do último período fechado. Registrar data e resultado abaixo.
 
 | Data | Versão | Resultado |
 |---|---|---|

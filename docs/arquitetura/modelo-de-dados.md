@@ -1,6 +1,6 @@
 # Modelo de dados
 
-Banco SQLite ([ADR-0003](adr/0003-sqlite-com-litestream.md)). Valores monetários em centavos (`*_cents`), tempo em minutos (`*_minutes`), datas em UTC no banco e exibidas em `America/Sao_Paulo`.
+Banco MySQL 8.4 ([ADR-0012](adr/0012-mysql-e-sail.md)). Valores monetários em centavos (`*_cents`), tempo em minutos (`*_minutes`), datas em UTC no banco e exibidas em `America/Sao_Paulo`.
 
 ```mermaid
 erDiagram

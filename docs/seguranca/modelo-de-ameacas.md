@@ -7,8 +7,8 @@ Atualizar a cada versão. Método: STRIDE simplificado por funcionalidade.
 | Ativo | Por quê | Onde fica |
 |---|---|---|
 | Certificado A1 e senha | Permite emitir notas em nome da empresa | Disco privado criptografado + variável de ambiente |
-| Dados fiscais e de clientes (CNPJ, endereços, valores) | Dados de terceiros, sigilo comercial, LGPD | SQLite |
-| Permissões e contas de administrador | Quem é administrador controla tudo | SQLite |
+| Dados fiscais e de clientes (CNPJ, endereços, valores) | Dados de terceiros, sigilo comercial, LGPD | MySQL |
+| Permissões e contas de administrador | Quem é administrador controla tudo | MySQL |
 | Notas emitidas (XML/PDF) | Documento fiscal; adulteração ou perda tem efeito legal | Disco privado + backup |
 | Segredos (`APP_KEY`, chaves do Spaces, SMTP) | Comprometem todo o resto | `.env` do servidor |
 | Disponibilidade | Lançamento de horas e emissão no prazo | Droplet + Cloudflare |
@@ -29,12 +29,11 @@ Atualizar a cada versão. Método: STRIDE simplificado por funcionalidade.
 flowchart LR
     I((Internet)) -->|HTTPS| CF[Cloudflare<br/>WAF, Turnstile, Access]
     CF -->|Tunnel| APP[Aplicação]
-    APP --> DB[(SQLite)]
+    APP -->|VPC| DB[(MySQL gerenciado)]
     APP --> FS[(Arquivos privados)]
     APP -->|mTLS + certificado| NF[Emissor Nacional]
     APP -->|SMTP| MAIL[E-mail]
-    LS[Litestream] --> SP[(DO Spaces)]
-    DB --- LS
+    FS -.-> SP[(DO Spaces)]
 ```
 
 Toda entrada que cruza uma seta vinda de fora é validada; toda saída para fora é registrada.

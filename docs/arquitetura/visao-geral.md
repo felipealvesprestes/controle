@@ -115,7 +115,7 @@ sequenceDiagram
 | Tipo | Alvo | Ferramenta |
 |---|---|---|
 | Unitário | Domain (sem Laravel) — cálculo, arredondamento, estados | Pest |
-| Feature | Casos de uso e telas Livewire, com SQLite em memória | Pest + Livewire |
+| Feature | Casos de uso e telas Livewire, com MySQL (banco `testing` do Sail) | Pest + Livewire |
 | Contrato | Toda implementação de `InvoiceIssuer` e repositório | Pest (datasets) |
 | Arquitetura | Regra de dependência entre camadas | Pest `arch()` |
 | Estático | Tipos | Larastan |

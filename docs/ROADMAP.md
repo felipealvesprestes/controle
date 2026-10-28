@@ -28,6 +28,7 @@ timeline
 Base técnica e visual sobre a qual todo o resto é construído.
 
 - [x] Pasta `docs/` com roadmap, regras, funcionalidades, telas e linguagem visual
+- [x] Ambiente de desenvolvimento com Sail e MySQL ([ADR-0012](arquitetura/adr/0012-mysql-e-sail.md))
 - [x] Repositório no GitHub com Conventional Commits ([contribuindo.md](contribuindo.md))
 - [x] CI: Pint, PHPStan nível máximo, testes com cobertura mínima de 100% ([ADR-0009](arquitetura/adr/0009-qualidade-e-fluxo-de-trabalho.md))
 - [x] Testes de arquitetura entre camadas ([ADR-0002](arquitetura/adr/0002-arquitetura-em-camadas.md))
@@ -95,7 +96,7 @@ Portão de segurança antes da web. Detalhes em [seguranca/README.md](seguranca/
 Marco: a planilha deixa de ser usada.
 
 - [ ] Infraestrutura na Digital Ocean ([operacao/deploy.md](operacao/deploy.md))
-- [ ] Backup contínuo com Litestream e teste de restauração documentado
+- [ ] MySQL gerenciado da DO com backups e teste de restauração documentado ([ADR-0012](arquitetura/adr/0012-mysql-e-sail.md))
 - [ ] [F-11 PWA e experiência mobile](funcionalidades/F-11-pwa-e-experiencia-mobile.md)
 - [ ] Publicação somente após o critério de saída da v0.9
 - [ ] OWASP ZAP baseline semanal agendado contra produção

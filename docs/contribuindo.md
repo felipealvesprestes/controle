@@ -44,18 +44,36 @@ docs: adiciona tela de perfis de acesso
 
 Mudança que quebra compatibilidade: `feat!:` e um parágrafo `BREAKING CHANGE:` no corpo.
 
+## Ambiente de desenvolvimento
+
+Tudo roda no Laravel Sail com MySQL ([ADR-0012](arquitetura/adr/0012-mysql-e-sail.md)). Na primeira vez: `cp .env.example .env`, `composer install` e depois:
+
+```bash
+vendor/bin/sail up -d
+```
+
+```bash
+vendor/bin/sail artisan key:generate
+```
+
+```bash
+vendor/bin/sail artisan migrate
+```
+
+O sistema fica em http://localhost e os e-mails em http://localhost:8025 (Mailpit). Os comandos abaixo rodam dentro do Sail: prefixe com `vendor/bin/sail` (ex.: `vendor/bin/sail composer test`).
+
 ## Antes de cada commit
 
 ```bash
-composer lint
+vendor/bin/sail composer lint
 ```
 
 ```bash
-composer types:check
+vendor/bin/sail composer types:check
 ```
 
 ```bash
-composer test:coverage
+vendor/bin/sail composer test:coverage
 ```
 
 | Script | O que faz |
@@ -63,8 +81,7 @@ composer test:coverage
 | `composer lint` | Formata com Pint |
 | `composer types:check` | PHPStan nível máximo |
 | `composer test` | Pint (verificação), PHPStan e testes |
-| `composer test:coverage` | Testes com cobertura mínima de 100% (exige pcov) |
-| `composer test:coverage:docker` | O mesmo, dentro do container do Sail (pcov já instalado) |
+| `composer test:coverage` | Testes com cobertura mínima de 100% (pcov) |
 
 ## Segurança
 

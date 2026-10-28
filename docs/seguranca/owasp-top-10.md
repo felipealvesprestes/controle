@@ -40,7 +40,7 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 |---|---|---|---|---|
 | SEC-18 | Certificado A1 criptografado em repouso com chave própria; senha só em variável de ambiente | Teste: arquivo salvo não é um PKCS#12 legível | v1.2 | 📋 |
 | SEC-19 | Senhas com hash forte (bcrypt/argon2id), segredos de 2FA criptografados (Fortify) | Teste | v0.1 | ✅ (starter kit) |
-| SEC-20 | Backups criptografados no Spaces; bucket privado | Revisão de configuração | v0.9 | 📋 |
+| SEC-20 | Banco só na VPC; backups do MySQL gerenciado e arquivos criptografados no Spaces; bucket privado | Revisão de configuração | v0.9 | 📋 |
 | SEC-21 | Nada sensível em URL, log ou mensagem de erro (CPF/CNPJ, valores, tokens) | Teste de logs + revisão | v0.2 | 📋 |
 | SEC-22 | Plano de rotação da `APP_KEY` (`APP_PREVIOUS_KEYS`) documentado | Documento | v0.9 | 📋 |
 

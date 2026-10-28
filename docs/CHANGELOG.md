@@ -4,6 +4,10 @@ Mudanças visíveis para quem usa o sistema, por versão. Formato baseado em [Ke
 
 ## [Não publicado]
 
+### Alterado
+
+- Banco oficial passa a ser MySQL; desenvolvimento roda no Laravel Sail (ADR-0012).
+
 ### Segurança
 
 - Ações de 2FA exigem confirmação de senha recente também nas atualizações do Livewire (A-01).

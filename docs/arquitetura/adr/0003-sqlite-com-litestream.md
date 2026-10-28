@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | Aceita |
+| **Status** | Substituída por [ADR-0012](0012-mysql-e-sail.md) |
 | **Data** | 2026-10-28 |
 
 ## Contexto
