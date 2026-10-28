@@ -26,10 +26,10 @@ Base técnica e visual sobre a qual todo o resto é construído.
 
 - [x] Pasta `docs/` com roadmap, regras, funcionalidades, telas e linguagem visual
 - [x] Repositório no GitHub com Conventional Commits ([contribuindo.md](contribuindo.md))
-- [ ] CI: Pint, PHPStan nível máximo, testes com cobertura mínima de 100% ([ADR-0009](arquitetura/adr/0009-qualidade-e-fluxo-de-trabalho.md))
-- [ ] Testes de arquitetura entre camadas ([ADR-0002](arquitetura/adr/0002-arquitetura-em-camadas.md))
-- [ ] Value Objects `Money`, `Minutes`, `Points` ([ADR-0004](arquitetura/adr/0004-dinheiro-e-tempo-em-inteiros.md))
-- [ ] `BillingCalculator` e políticas de arredondamento, com testes das regras RN-01, RN-05, RN-06 e RN-07
+- [x] CI: Pint, PHPStan nível máximo, testes com cobertura mínima de 100% ([ADR-0009](arquitetura/adr/0009-qualidade-e-fluxo-de-trabalho.md))
+- [x] Testes de arquitetura entre camadas ([ADR-0002](arquitetura/adr/0002-arquitetura-em-camadas.md))
+- [x] Value Objects `Money`, `Minutes`, `Points` ([ADR-0004](arquitetura/adr/0004-dinheiro-e-tempo-em-inteiros.md))
+- [x] `BillingCalculator` e políticas de arredondamento, com testes das regras RN-01, RN-05, RN-06 e RN-07
 - [ ] Locale `pt_BR`, fuso `America/Sao_Paulo`, moeda BRL
 - [ ] Tokens visuais e `ui.app-shell` no estilo console ([linguagem-visual.md](design/linguagem-visual.md))
 - [ ] Login traduzido e sem cadastro público ([F-01](funcionalidades/F-01-acesso-e-seguranca.md))

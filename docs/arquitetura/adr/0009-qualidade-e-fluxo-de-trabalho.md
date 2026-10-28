@@ -16,6 +16,7 @@ O sistema vai emitir notas fiscais e evoluir por muito tempo. Regras de cálculo
 - **Pint** no padrão do projeto; CI roda em modo de verificação.
 - **Testes de arquitetura** (Pest `arch()`): `Domain` não depende de Laravel nem de outras camadas; `Application` não depende de `Infrastructure` nem de `Http`/`Livewire`; sem `dd`/`dump`/`ray`; classes de domínio `final` e Value Objects `readonly`.
 - **Commits no padrão Conventional Commits**, em português: `tipo: mensagem`. Detalhes em [contribuindo.md](../../contribuindo.md).
+- **Componentes Livewire do projeto são baseados em classe** (`app/Livewire`), com a view separada. Componentes de arquivo único (`⚡*.blade.php`) ficam fora do PHPStan e da cobertura; os que vieram do starter kit serão substituídos pelas telas do console.
 - Exclusões de cobertura só com justificativa por escrito no próprio código (`@codeCoverageIgnore` + motivo) e revisão.
 
 ## Alternativas consideradas

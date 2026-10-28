@@ -6,7 +6,7 @@ Regras numeradas e estáveis. Cada regra deve ter pelo menos um teste que cite o
 
 ### RN-01 — Ponto
 
-1 ponto = 15 minutos. Pontos cobrados são sempre números inteiros.
+1 ponto = 15 minutos. Nas políticas **Período** e **Lançamento**, os pontos cobrados são sempre números inteiros. Na política **Exato**, a cobrança é por minuto e o período não informa pontos.
 
 ### RN-02 — Duração
 

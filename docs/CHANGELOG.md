@@ -7,4 +7,5 @@ Mudanças visíveis para quem usa o sistema, por versão. Formato baseado em [Ke
 ### Adicionado
 
 - Documentação inicial do produto: visão, regras de negócio, funcionalidades, telas, arquitetura, fiscal e deploy.
+- Cálculo de cobrança com pontos de 15 minutos e três políticas de arredondamento (período, lançamento, exato), coberto por testes com os meses da planilha.
 - Usuários com permissões granulares (F-17), linguagem visual de console e regras de qualidade (ADR-0007 a ADR-0009).

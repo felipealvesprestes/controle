@@ -4,7 +4,7 @@ Como o código e a documentação evoluem neste projeto. Decisão: [ADR-0009](ar
 
 ## Repositório
 
-- Remote: `https://github.com/felipealvesprestes/controle.git`
+- Remote: `git@github.com:felipealvesprestes/controle.git`
 - Branch principal: `main`. Trabalho maior vai em branch `tipo/descricao-curta` (ex.: `feat/cronometro`) e entra por pull request.
 
 ## Commits
