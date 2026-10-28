@@ -4,6 +4,10 @@ Mudanças visíveis para quem usa o sistema, por versão. Formato baseado em [Ke
 
 ## [Não publicado]
 
+### Adicionado
+
+- Seeder do administrador inicial (`AdminUserSeeder`), configurado pelo `.env`, e coluna `is_admin` em `users`.
+
 ### Alterado
 
 - Banco oficial passa a ser MySQL; desenvolvimento roda no Laravel Sail (ADR-0012).

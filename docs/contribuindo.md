@@ -60,6 +60,12 @@ vendor/bin/sail artisan key:generate
 vendor/bin/sail artisan migrate
 ```
 
+Para criar seu administrador, preencha `ADMIN_NAME` e `ADMIN_EMAIL` no `.env` e rode o seeder. Sem `ADMIN_PASSWORD`, defina a senha em "Esqueci a senha": o e-mail chega no Mailpit.
+
+```bash
+vendor/bin/sail artisan db:seed
+```
+
 O sistema fica em http://localhost e os e-mails em http://localhost:8025 (Mailpit). Os comandos abaixo rodam dentro do Sail: prefixe com `vendor/bin/sail` (ex.: `vendor/bin/sail composer test`).
 
 ## Antes de cada commit

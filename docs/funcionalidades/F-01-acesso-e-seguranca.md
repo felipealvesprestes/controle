@@ -14,7 +14,7 @@ Só pessoas cadastradas pelo administrador acessam o sistema. Como ele guardará
 ## Comportamento
 
 - Login por e-mail e senha (Fortify, já no starter kit).
-- **Cadastro público desativado.** O primeiro administrador é criado por comando (`php artisan app:create-admin`); os demais usuários entram por convite do administrador.
+- **Cadastro público desativado.** O primeiro administrador é criado pelo `AdminUserSeeder`, a partir de `ADMIN_NAME`, `ADMIN_EMAIL` e `ADMIN_PASSWORD` no `.env` (sem senha, ela é definida pelo "esqueci a senha"; o seeder nunca promove uma conta comum já existente); os demais usuários entram por convite do administrador.
 - **Convite:** e-mail com link assinado, válido por 72 h, para definir a senha.
 - 2FA por aplicativo autenticador; obrigatório para administradores a partir da v1.0 e opcional (ou exigido pelo administrador) para os demais.
 - Sessão longa no celular ("manter conectado").
