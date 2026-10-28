@@ -67,10 +67,15 @@
             "@php artisan config:clear --ansi",
             "@lint:check",
             "@types:check",
+            "@security:audit",
             "@test:coverage"
         ],
         "types:check": [
             "phpstan analyse --memory-limit=1G"
+        ],
+        "security:audit": [
+            "composer audit",
+            "npm audit --audit-level=moderate"
         ],
         "test": [
             "@php artisan config:clear --ansi",
