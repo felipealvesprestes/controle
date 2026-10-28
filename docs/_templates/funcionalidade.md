@@ -23,6 +23,14 @@ Descrição do fluxo principal e dos alternativos.
 
 - [ ] ...
 
+## Segurança
+
+| Ameaça | Controles (`SEC-xx`) | Teste |
+|---|---|---|
+| Ex.: usuário sem permissão chama a ação direto | SEC-02 | 403 na chamada direta |
+
+Permissões do catálogo usadas por esta funcionalidade: `modulo.recurso.acao`, ...
+
 ## Fora de escopo
 
 O que deliberadamente não entra agora.

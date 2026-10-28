@@ -56,4 +56,5 @@ flowchart LR
 - [ ] Permissões da tela declaradas no catálogo e aplicadas em menu, página, ações, campos e conteúdo.
 - [ ] Estados vazio, carregando, erro e sem permissão desenhados.
 - [ ] Funciona em 390 px e em 1440 px; teclado e leitor de tela.
+- [ ] Nenhum dado sensível em URL; saída escapada; ações destrutivas com confirmação e, se sensíveis, reautenticação (SEC-34).
 - [ ] Revisada contra a lista "Contra a cara de IA" da linguagem visual.

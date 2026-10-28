@@ -18,6 +18,7 @@ Esta pasta é a fonte da verdade do produto. O código implementa o que está de
 | [design/linguagem-visual.md](design/linguagem-visual.md) | Estilo de console, tokens, componentes e o que é proibido |
 | [contribuindo.md](contribuindo.md) | Commits, scripts de qualidade e fluxo de trabalho |
 | [arquitetura/](arquitetura/visao-geral.md) | Camadas, padrões de projeto, modelo de dados e decisões (ADRs) |
+| [seguranca/](seguranca/README.md) | Programa de segurança, controles OWASP (`SEC-xx`), modelo de ameaças, achados |
 | [fiscal/](fiscal/nfse.md) | NFS-e, Simples Nacional, Fator R e prazos legais |
 | [operacao/deploy.md](operacao/deploy.md) | Infraestrutura na Digital Ocean, backup e deploy |
 | [_templates/](_templates/) | Modelos para novas páginas |
@@ -29,6 +30,7 @@ Esta pasta é a fonte da verdade do produto. O código implementa o que está de
 - `RN-xx` regra de negócio
 - `F-xx` funcionalidade
 - `T-xx` tela
+- `SEC-xx` controle de segurança
 - `ADR-xxxx` decisão de arquitetura
 
 Use os IDs para referenciar itens entre documentos, em commits e em testes (ex.: `it('arredonda o período para cima em pontos inteiros — RN-06')`).

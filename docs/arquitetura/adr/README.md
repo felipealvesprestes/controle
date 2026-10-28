@@ -13,3 +13,5 @@ Cada decisão técnica relevante vira um arquivo numerado, criado a partir de [_
 | [0007](0007-permissoes-granulares.md) | Permissões granulares com catálogo em código | Aceita |
 | [0008](0008-linguagem-visual-de-console.md) | Linguagem visual de console | Aceita |
 | [0009](0009-qualidade-e-fluxo-de-trabalho.md) | Cobertura de 100%, PHPStan máximo, Pint e Conventional Commits | Aceita |
+| [0010](0010-cloudflare-na-borda.md) | Cloudflare na borda: Tunnel, WAF, Turnstile, Access | Aceita |
+| [0011](0011-auditoria-de-seguranca.md) | Auditoria com OWASP e a skill `security-audit` da Cloudflare | Aceita |

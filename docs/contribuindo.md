@@ -62,6 +62,10 @@ composer test:coverage
 | `composer test:coverage` | Testes com cobertura mínima de 100% (exige pcov) |
 | `composer test:coverage:docker` | O mesmo, dentro do container do Sail (pcov já instalado) |
 
+## Segurança
+
+Antes de abrir um PR, peça ao Claude Code: "use a skill security-audit para revisar o diff desta branch contra a main". Achados confirmados seguem o processo de [seguranca/README.md](seguranca/README.md). Nunca versionar relatórios de auditoria, `.env`, certificados ou chaves.
+
 ## Documentação
 
 Toda mudança de comportamento atualiza a página correspondente em `docs/` no mesmo commit ou PR. Ver [README.md](README.md#convenções).
