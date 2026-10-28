@@ -137,8 +137,11 @@ new #[Title('Profile settings')] class extends Component {
             </div>
         </form>
 
-        @if ($this->showDeleteUser)
-            <livewire:pages::settings.delete-user-form />
-        @endif
     </x-pages::settings.layout>
+
+    @if ($this->showDeleteUser)
+        <x-pages::settings.layout :heading="__('Delete account')" :subheading="__('Delete your account and all of its resources')">
+            <livewire:pages::settings.delete-user-form />
+        </x-pages::settings.layout>
+    @endif
 </section>

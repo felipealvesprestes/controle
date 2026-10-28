@@ -14,3 +14,25 @@ test('authenticated users can visit the dashboard', function () {
     $response = $this->get(route('dashboard'));
     $response->assertOk();
 });
+
+test('dashboard shows the billing rule computed from the spreadsheet october', function () {
+    $this->actingAs(User::factory()->create())
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee('R$ 1.335,00')
+        ->assertSee('22h04')
+        ->assertSee('22h15')
+        ->assertSee('R$ 15,00');
+});
+
+test('dashboard setup counts only what is really done', function () {
+    $user = User::factory()->create(['is_admin' => true]);
+
+    $this->actingAs($user)->get(route('dashboard'))
+        ->assertViewHas('stepsDone', 1);
+
+    $user->forceFill(['two_factor_confirmed_at' => now()])->save();
+
+    $this->actingAs($user)->get(route('dashboard'))
+        ->assertViewHas('stepsDone', 2);
+});

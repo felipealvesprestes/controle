@@ -1,3 +1,7 @@
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
 
@@ -8,42 +12,103 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Visual language: docs/design/linguagem-visual.md (ADR-0008).
+ * Components use these tokens only, never literal colours.
+ */
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-    --color-zinc-50: #fafafa;
-    --color-zinc-100: #f5f5f5;
-    --color-zinc-200: #e5e5e5;
-    --color-zinc-300: #d4d4d4;
-    --color-zinc-400: #a3a3a3;
-    --color-zinc-500: #737373;
-    --color-zinc-600: #525252;
-    --color-zinc-700: #404040;
-    --color-zinc-800: #262626;
-    --color-zinc-900: #171717;
-    --color-zinc-950: #0a0a0a;
+    /* Neutral greys used by Flux; 500 and up pass 4.5:1 on white. */
+    --color-zinc-50: #f7f8f9;
+    --color-zinc-100: #f1f3f4;
+    --color-zinc-200: #e3e7e8;
+    --color-zinc-300: #cfd5d8;
+    --color-zinc-400: #737e86;
+    --color-zinc-500: #5d6870;
+    --color-zinc-600: #475158;
+    --color-zinc-700: #353c41;
+    --color-zinc-800: #22272b;
+    --color-zinc-900: #181b1e;
+    --color-zinc-950: #0f1113;
 
-    --color-accent: var(--color-neutral-800);
-    --color-accent-content: var(--color-neutral-800);
+    /* Surfaces and text */
+    --color-ground: #f1f3f4;
+    --color-surface: #ffffff;
+    --color-line: #e3e7e8;
+    --color-ink: #1b1f22;
+    --color-muted: #5d6870;
+
+    /* The one hue: petrol. Data, the active place, links and one primary action. */
+    --color-brand: #0f6b74;
+    --color-brand-strong: #0b565d;
+    --color-brand-soft: #e2f0f1;
+    --color-brand-band: #eef5f6;
+
+    --color-positive: #247b50;
+    --color-positive-soft: #dcfae5;
+    --color-negative: #b3261e;
+    --color-negative-soft: #ffedea;
+
+    --color-accent: var(--color-brand);
+    --color-accent-content: var(--color-brand);
     --color-accent-foreground: var(--color-white);
 }
 
 @layer theme {
     .dark {
-        --color-accent: var(--color-white);
-        --color-accent-content: var(--color-white);
-        --color-accent-foreground: var(--color-neutral-800);
+        --color-ground: #121416;
+        --color-surface: #1a1d20;
+        --color-line: #2c3136;
+        --color-ink: #e8eaec;
+        --color-muted: #a3acb3;
+
+        --color-brand: #4fb3bb;
+        --color-brand-strong: #78c7cd;
+        --color-brand-soft: #17393c;
+        --color-brand-band: #15262a;
+
+        --color-positive: #3fc07a;
+        --color-positive-soft: #172a1d;
+        --color-negative: #e5566f;
+        --color-negative-soft: #2c1a20;
+
+        --color-accent: var(--color-brand);
+        --color-accent-content: var(--color-brand);
+        --color-accent-foreground: #0b1d1f;
     }
 }
 
 @layer base {
-
     *,
     ::after,
     ::before,
     ::backdrop,
     ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
+        border-color: var(--color-line, currentColor);
+    }
+
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        @apply bg-ground text-ink;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-brand);
+        outline-offset: 2px;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+
+    .num {
+        font-variant-numeric: tabular-nums;
     }
 }
 
@@ -52,15 +117,20 @@
 }
 
 [data-flux-label] {
-    @apply  !mb-0 !leading-tight;
+    @apply !mb-0 !leading-tight;
 }
 
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
-    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+    @apply outline-hidden ring-2 ring-brand/40 ring-offset-0 border-brand;
 }
 
-/* \[:where(&)\]:size-4 {
-    @apply size-4;
-} */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
