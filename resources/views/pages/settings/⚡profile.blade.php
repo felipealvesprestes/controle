@@ -5,6 +5,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Flux\Flux;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
@@ -13,6 +14,7 @@ use Livewire\Component;
 new #[Title('Profile settings')] class extends Component {
     public string $name = '';
     public string $email = '';
+    public string $current_password = '';
 
     /**
      * Mount the component.
@@ -30,18 +32,25 @@ new #[Title('Profile settings')] class extends Component {
     {
         $user = Auth::user();
 
+        $this->email = Str::lower(trim($this->email));
+        $emailChanged = $this->email !== $user->email;
+
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
+            // The email is the account recovery channel: changing it requires the current password (A-02).
+            'current_password' => [Rule::requiredIf($emailChanged), 'nullable', 'string', 'current_password'],
         ]);
 
-        $user->fill($validated);
+        $user->fill(['name' => $validated['name'], 'email' => $validated['email']]);
 
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
 
         $user->save();
+
+        $this->reset('current_password');
 
         Flux::toast(variant: 'success', text: __('Profile updated.'));
     }
@@ -108,6 +117,15 @@ new #[Title('Profile settings')] class extends Component {
                     </div>
                 @endif
             </div>
+
+            <flux:input
+                wire:model="current_password"
+                :label="__('Current password')"
+                :description="__('Required to change your email address.')"
+                type="password"
+                autocomplete="current-password"
+                viewable
+            />
 
             <div class="flex items-center gap-4">
                 <div class="flex items-center justify-end">
