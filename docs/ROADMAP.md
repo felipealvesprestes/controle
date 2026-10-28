@@ -23,7 +23,7 @@ timeline
 
 ## Versões
 
-### v0.1 — Fundação · 🚧 Em desenvolvimento
+### v0.1 — Fundação · ✅ Concluída
 
 Base técnica e visual sobre a qual todo o resto é construído.
 
@@ -38,8 +38,8 @@ Base técnica e visual sobre a qual todo o resto é construído.
 - [x] Testes de arquitetura contra `DB::raw`, `{!! !!}` e `unserialize` (SEC-23, SEC-24, SEC-39)
 - [x] Skill `security-audit` da Cloudflare instalada ([ADR-0011](arquitetura/adr/0011-auditoria-de-seguranca.md))
 - [x] Locale `pt_BR`, fuso de exibição `America/Sao_Paulo` (banco em UTC) e traduções da interface
-- [ ] Tokens visuais e `ui.app-shell` no estilo console ([linguagem-visual.md](design/linguagem-visual.md))
-- [ ] Login traduzido e sem cadastro público ([F-01](funcionalidades/F-01-acesso-e-seguranca.md))
+- [x] Tokens visuais e app shell no estilo console (referência: telas do GCP) ([linguagem-visual.md](design/linguagem-visual.md))
+- [x] Login traduzido e sem cadastro público ([F-01](funcionalidades/F-01-acesso-e-seguranca.md))
 
 ### v0.2 — Acesso · 📋 Planejado
 

@@ -6,6 +6,9 @@ Mudanças visíveis para quem usa o sistema, por versão. Formato baseado em [Ke
 
 ### Adicionado
 
+- Interface no estilo console (referência GCP): barra superior, menu lateral agrupado, faixa de cabeçalho com abas, modo claro e escuro, IBM Plex local.
+- Painel com a configuração inicial real e a regra de cobrança calculada com outubro da planilha.
+
 - Interface em português (pt_BR) e fuso de exibição America/Sao_Paulo.
 - CI barra segredos (gitleaks) e dependências vulneráveis; testes barram SQL cru, saída sem escape e `unserialize`.
 

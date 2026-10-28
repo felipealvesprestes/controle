@@ -42,18 +42,26 @@ A referência é o **modelo de interação** de consoles como o do GCP, não a a
 | Região | Comportamento |
 |---|---|
 | **Barra superior** | Menu, nome do produto, **seletor de contexto** (cliente atual ou "Todos", como o seletor de projeto do GCP), busca global com atalho `/`, status do cronômetro, ajuda, menu do usuário |
-| **Navegação lateral** | Grupos com título em versalete pequeno. Recolhível para só ícones. Itens sem permissão não aparecem |
-| **Cabeçalho da página** | Breadcrumb, título, barra de ações em botões de texto em caixa alta (`+ CRIAR`, `↻ ATUALIZAR`, `⋮` mais ações) |
+| **Navegação lateral** | Grupos com título em texto normal ("Trabalho", "Conta"); item ativo num fundo suave do destaque com o texto no destaque, arredondado só à direita, como no GCP. Só aparecem telas que existem e que o usuário pode acessar; vira gaveta abaixo de 1024 px |
+| **Cabeçalho da página** | Faixa num tom claro do destaque (`brand-band`) com breadcrumb, título, uma linha de contexto, ações à direita e abas sublinhadas, como nas telas do GCP. Ações em texto com só a inicial maiúscula ("Fechar período") |
 | **Barra de filtro** | Campo único que vira chips (`status: Aberto`). Filtros ficam na URL |
 | **Tabela** | Cabeçalho fixo, ordenação, seleção múltipla com ações em lote, seletor de colunas, números alinhados à direita com `tabular-nums` |
 | **Página de detalhe** | Cabeçalho com nome + status, abas (`Detalhes · Lançamentos · Relatório · Nota fiscal · Histórico`) |
 | **Painel lateral** | Abre à direita para criar/editar sem perder a lista. Rodapé fixo com `SALVAR` / `CANCELAR` |
 | **Histórico** | Toda página de detalhe tem aba com o registro de auditoria do recurso |
 
+## Referência e ajustes
+
+Referência visual: telas atuais do Google Cloud (barra branca, faixa de cabeçalho clara com abas, menu lateral com item ativo suave, conteúdo em painéis brancos sobre fundo cinza). Ajustes vindos da skill `design-taste-frontend`, aceitos em 2026-10-28:
+
+1. Ações e botões só com a inicial maiúscula, nunca em caixa alta.
+2. O destaque vai para dados, para o lugar ativo (menu, aba) e para **uma** ação principal por tela; os demais botões são contornados.
+3. Nada de cards de indicador com ícone em círculo, gradiente, emoji ou saudação: o Painel mostra a configuração inicial real e a regra de cobrança calculada pelo domínio.
+
 ## Celular (< 768 px)
 
 - Barra superior compacta: menu, contexto e cronômetro.
-- Navegação lateral vira gaveta; os 4 destinos mais usados ficam numa barra inferior (Hoje, Lançamentos, Faturamento, Painel).
+- Navegação lateral vira gaveta aberta pelo botão de menu. A barra inferior com Hoje, Lançamentos, Faturamento e Painel entra na v0.4, quando essas telas existirem.
 - Tabelas viram listas de duas linhas (título + metadados), com as mesmas ações no `⋮`.
 - Painel lateral vira folha inferior (bottom sheet) de altura total.
 - Ação principal fixa no rodapé, ao alcance do polegar.
@@ -67,12 +75,12 @@ Definidos como variáveis CSS no `@theme` do Tailwind 4 (`resources/css/app.css`
 | Uso | Fonte | Tamanho / peso |
 |---|---|---|
 | Interface | **IBM Plex Sans** | 14 px / 400 corpo, 500 rótulos |
-| Títulos de página | IBM Plex Sans | 22 px / 400 |
+| Títulos de página | IBM Plex Sans | 24–28 px / 400 |
 | Seções | IBM Plex Sans | 16 px / 500 |
 | Códigos, IDs, referências (`MRP-62`), horários | **IBM Plex Mono** | 13 px / 400 |
-| Ações da barra | IBM Plex Sans | 13 px / 500, caixa alta, `tracking-wide` |
+| Ações e botões | IBM Plex Sans | 14 px / 500, só a inicial maiúscula |
 
-Fontes servidas localmente (sem CDN). Inputs com 16 px no celular para não haver zoom no iOS.
+Fontes servidas localmente pelo pacote `@fontsource` (sem CDN, nem no build). Inputs com 16 px no celular para não haver zoom no iOS.
 
 ### Cores (tema claro)
 
@@ -93,7 +101,7 @@ Tema escuro: mesmos tokens com valores próprios, fundo `#15171a`, superfície `
 
 ### Forma e espaço
 
-- Raio: **4 px** em controles, **6 px** em painéis e menus. Nada de cantos muito arredondados.
+- Raio: **6–8 px** em controles e painéis; pílulas totalmente arredondadas só em selos e no item ativo do menu (lado direito).
 - Sombra só em camadas sobrepostas (menus, painel lateral, diálogos). Conteúdo é separado por borda, não por sombra.
 - Grade de 4 px. Linha de tabela: 36 px (desktop), 48 px (toque).
 - Ícones de traço fino (1,5 px), 18 px, sempre com rótulo visível ou `aria-label`.
@@ -124,8 +132,9 @@ Flux é a base de comportamento (acessibilidade, teclado, modais). A aparência 
 
 | Componente | Status |
 |---|---|
-| `ui.app-shell` (barra superior + navegação + conteúdo) | 📋 Planejado |
-| `ui.page-header` (breadcrumb, título, ações) | 📋 Planejado |
+| Layout `layouts/app/console` (barra superior + navegação + conteúdo) | ✅ v0.1 |
+| `ui.nav-item`, `ui.tab` | ✅ v0.1 |
+| `ui.page-header` (breadcrumb, título, ações) | ✅ v0.1 |
 | `ui.filter-bar` | 📋 Planejado |
 | `ui.data-table` | 📋 Planejado |
 | `ui.side-panel` | 📋 Planejado |
