@@ -43,7 +43,7 @@ A referência é o **modelo de interação** de consoles como o do GCP, não a a
 |---|---|
 | **Barra superior** | Menu, nome do produto, **seletor de contexto** (cliente atual ou "Todos", como o seletor de projeto do GCP), busca global com atalho `/`, status do cronômetro, ajuda, menu do usuário |
 | **Navegação lateral** | Grupos com título em texto normal ("Trabalho", "Conta"); item ativo num fundo suave do destaque com o texto no destaque, arredondado só à direita, como no GCP. Só aparecem telas que existem e que o usuário pode acessar; vira gaveta abaixo de 1024 px |
-| **Cabeçalho da página** | Faixa num tom claro do destaque (`brand-band`) com breadcrumb, título, uma linha de contexto, ações à direita e abas sublinhadas, como nas telas do GCP. Ações em texto com só a inicial maiúscula ("Fechar período") |
+| **Cabeçalho da página** | Faixa branca e compacta separada por uma linha: caminho em 13 px, título em 22 px/500, uma linha de contexto, ações à direita e abas sublinhadas, como no console do GCP. Ações em texto com só a inicial maiúscula ("Fechar período") |
 | **Barra de filtro** | Campo único que vira chips (`status: Aberto`). Filtros ficam na URL |
 | **Tabela** | Cabeçalho fixo, ordenação, seleção múltipla com ações em lote, seletor de colunas, números alinhados à direita com `tabular-nums` |
 | **Página de detalhe** | Cabeçalho com nome + status, abas (`Detalhes · Lançamentos · Relatório · Nota fiscal · Histórico`) |
@@ -52,7 +52,7 @@ A referência é o **modelo de interação** de consoles como o do GCP, não a a
 
 ## Referência e ajustes
 
-Referência visual: telas atuais do Google Cloud (barra branca, faixa de cabeçalho clara com abas, menu lateral com item ativo suave, conteúdo em painéis brancos sobre fundo cinza). Ajustes vindos da skill `design-taste-frontend`, aceitos em 2026-10-28:
+Referência visual: telas atuais do Google Cloud (barra branca, cabeçalho compacto com abas, menu lateral com item ativo suave, conteúdo em painéis brancos sobre fundo cinza). Ajustes vindos da skill `design-taste-frontend`, aceitos em 2026-10-28:
 
 1. Ações e botões só com a inicial maiúscula, nunca em caixa alta.
 2. O destaque vai para dados, para o lugar ativo (menu, aba) e para **uma** ação principal por tela; os demais botões são contornados.
