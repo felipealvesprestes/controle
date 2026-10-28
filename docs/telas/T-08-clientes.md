@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Status** | 📋 Planejado |
-| **Rota** | `/clientes`, `/clientes/{id}` |
+| **Rota** | `/clients`, `/clients/{id}` |
 | **Funcionalidades** | F-03 |
 | **Acesso** | Mais → Clientes |
 

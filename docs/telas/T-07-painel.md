@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Status** | 📋 Planejado |
-| **Rota** | `/painel` |
+| **Rota** | `/dashboard` |
 | **Funcionalidades** | F-10, F-14 |
 | **Acesso** | Barra inferior |
 

@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Status** | 📋 Planejado |
-| **Rota** | `/faturamento` |
+| **Rota** | `/billing` |
 | **Funcionalidades** | F-08 |
 | **Acesso** | Barra inferior |
 

@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Status** | 📋 Planejado |
-| **Rota** | `/categorias` |
+| **Rota** | `/categories` |
 | **Funcionalidades** | F-04 |
 | **Acesso** | Mais → Categorias |
 

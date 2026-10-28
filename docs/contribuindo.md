@@ -7,6 +7,10 @@ Como o código e a documentação evoluem neste projeto. Decisão: [ADR-0009](ar
 - Remote: `git@github.com:felipealvesprestes/controle.git`
 - Branch principal: `main`. Trabalho maior vai em branch `tipo/descricao-curta` (ex.: `feat/cronometro`) e entra por pull request.
 
+## Idioma
+
+Código em inglês: classes, métodos, variáveis, arquivos, tabelas, colunas, rotas (URL e nome), chaves de permissão, eventos e testes. Português fica só no texto exibido ao usuário (arquivos de tradução `lang/pt_BR`), na documentação em `docs/` e nas mensagens de commit.
+
 ## Commits
 
 Padrão [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.0/), mensagem em português, no imperativo, sem ponto final:

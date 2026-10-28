@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Status** | 📋 Planejado |
-| **Rota** | `/lancamentos` |
+| **Rota** | `/time-entries` |
 | **Funcionalidades** | F-05 |
 | **Acesso** | Barra inferior |
 

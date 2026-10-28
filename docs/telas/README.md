@@ -8,17 +8,17 @@ As telas T-01 a T-11 trazem o wireframe da versão de celular (390 px), onde o u
 |---|---|---|---|---|
 | [T-01](T-01-login.md) | Login | `/login` | F-01 | 📋 Planejado |
 | [T-02](T-02-hoje.md) | Hoje | `/` | F-05, F-06 | 📋 Planejado |
-| [T-03](T-03-lancamentos.md) | Lançamentos | `/lancamentos` | F-05 | 📋 Planejado |
-| [T-04](T-04-lancamento.md) | Lançamento (criar/editar) | `/lancamentos/novo`, `/lancamentos/{id}` | F-05, F-16 | 📋 Planejado |
-| [T-05](T-05-faturamento.md) | Faturamento | `/faturamento` | F-08 | 📋 Planejado |
-| [T-06](T-06-periodo.md) | Período | `/faturamento/{id}` | F-08, F-09, F-12 | 📋 Planejado |
-| [T-07](T-07-painel.md) | Painel | `/painel` | F-10, F-14 | 📋 Planejado |
-| [T-08](T-08-clientes.md) | Clientes | `/clientes` | F-03 | 📋 Planejado |
-| [T-09](T-09-categorias.md) | Categorias | `/categorias` | F-04 | 📋 Planejado |
-| [T-10](T-10-configuracoes.md) | Configurações | `/configuracoes` | F-01, F-02, F-07, F-12, F-14 | 📋 Planejado |
+| [T-03](T-03-lancamentos.md) | Lançamentos | `/time-entries` | F-05 | 📋 Planejado |
+| [T-04](T-04-lancamento.md) | Lançamento (criar/editar) | `/time-entries/create`, `/time-entries/{id}` | F-05, F-16 | 📋 Planejado |
+| [T-05](T-05-faturamento.md) | Faturamento | `/billing` | F-08 | 📋 Planejado |
+| [T-06](T-06-periodo.md) | Período | `/billing/{id}` | F-08, F-09, F-12 | 📋 Planejado |
+| [T-07](T-07-painel.md) | Painel | `/dashboard` | F-10, F-14 | 📋 Planejado |
+| [T-08](T-08-clientes.md) | Clientes | `/clients` | F-03 | 📋 Planejado |
+| [T-09](T-09-categorias.md) | Categorias | `/categories` | F-04 | 📋 Planejado |
+| [T-10](T-10-configuracoes.md) | Configurações | `/settings` | F-01, F-02, F-07, F-12, F-14 | 📋 Planejado |
 | [T-11](T-11-relatorio-publico.md) | Relatório público | `/r/{token}` | F-13 | 💡 Ideia |
-| [T-12](T-12-usuarios.md) | Usuários | `/admin/usuarios` | F-01, F-17 | 📋 Planejado |
-| [T-13](T-13-perfis-de-acesso.md) | Perfis de acesso | `/admin/perfis` | F-17 | 📋 Planejado |
+| [T-12](T-12-usuarios.md) | Usuários | `/admin/users` | F-01, F-17 | 📋 Planejado |
+| [T-13](T-13-perfis-de-acesso.md) | Perfis de acesso | `/admin/roles` | F-17 | 📋 Planejado |
 
 ## Navegação
 

@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Status** | 📋 Planejado |
-| **Rota** | `/lancamentos/novo`, `/lancamentos/{id}` (bottom sheet sobre a tela de origem) |
+| **Rota** | `/time-entries/create`, `/time-entries/{id}` (bottom sheet sobre a tela de origem) |
 | **Funcionalidades** | F-05, F-16 |
 | **Acesso** | `(+)` em T-02/T-03, toque num lançamento |
 

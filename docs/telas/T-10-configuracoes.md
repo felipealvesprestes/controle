@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Status** | 📋 Planejado |
-| **Rota** | `/configuracoes/*` |
+| **Rota** | `/settings/*` |
 | **Funcionalidades** | F-01, F-02, F-07, F-12, F-14 |
 | **Acesso** | Mais → Configurações |
 
