@@ -64,16 +64,27 @@
         ],
         "ci:check": [
             "Composer\\Config::disableProcessTimeout",
-            "@test"
+            "@php artisan config:clear --ansi",
+            "@lint:check",
+            "@types:check",
+            "@test:coverage"
         ],
         "types:check": [
-            "phpstan analyse"
+            "phpstan analyse --memory-limit=1G"
         ],
         "test": [
             "@php artisan config:clear --ansi",
             "@lint:check",
             "@types:check",
             "@php artisan test"
+        ],
+        "test:coverage": [
+            "@php artisan config:clear --ansi",
+            "@php -d pcov.enabled=1 vendor/bin/pest --coverage --min=100"
+        ],
+        "test:coverage:docker": [
+            "Composer\\Config::disableProcessTimeout",
+            "docker run --rm -e VIEW_COMPILED_PATH=/tmp/views -v \"$PWD\":/var/www/html -w /var/www/html --entrypoint sh sail-8.5/app -c 'mkdir -p /tmp/views && php -d pcov.enabled=1 vendor/bin/pest --coverage --min=100'"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
