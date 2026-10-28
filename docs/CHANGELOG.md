@@ -6,6 +6,9 @@ Mudanças visíveis para quem usa o sistema, por versão. Formato baseado em [Ke
 
 ### Adicionado
 
+- Interface em português (pt_BR) e fuso de exibição America/Sao_Paulo.
+- CI barra segredos (gitleaks) e dependências vulneráveis; testes barram SQL cru, saída sem escape e `unserialize`.
+
 - Seeder do administrador inicial (`AdminUserSeeder`), configurado pelo `.env`, e coluna `is_admin` em `users`.
 
 ### Alterado
@@ -13,6 +16,8 @@ Mudanças visíveis para quem usa o sistema, por versão. Formato baseado em [Ke
 - Banco oficial passa a ser MySQL; desenvolvimento roda no Laravel Sail (ADR-0012).
 
 ### Segurança
+
+- Dependências vulneráveis atualizadas e vite-plus substituído pelo vite (A-07).
 
 - Ações de 2FA exigem confirmação de senha recente também nas atualizações do Livewire (A-01).
 - Trocar o e-mail exige a senha atual; e-mails são salvos em minúsculas (A-02).

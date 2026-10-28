@@ -34,10 +34,10 @@ Base técnica e visual sobre a qual todo o resto é construído.
 - [x] Testes de arquitetura entre camadas ([ADR-0002](arquitetura/adr/0002-arquitetura-em-camadas.md))
 - [x] Value Objects `Money`, `Minutes`, `Points` ([ADR-0004](arquitetura/adr/0004-dinheiro-e-tempo-em-inteiros.md))
 - [x] `BillingCalculator` e políticas de arredondamento, com testes das regras RN-01, RN-05, RN-06 e RN-07
-- [ ] CI de segurança: `composer audit`, `npm audit` e gitleaks bloqueando o merge (SEC-14)
-- [ ] Testes de arquitetura contra `DB::raw`, `{!! !!}` e `unserialize` (SEC-23, SEC-24, SEC-39)
+- [x] CI de segurança: `composer audit`, `npm audit` e gitleaks bloqueando o merge (SEC-14)
+- [x] Testes de arquitetura contra `DB::raw`, `{!! !!}` e `unserialize` (SEC-23, SEC-24, SEC-39)
 - [x] Skill `security-audit` da Cloudflare instalada ([ADR-0011](arquitetura/adr/0011-auditoria-de-seguranca.md))
-- [ ] Locale `pt_BR`, fuso `America/Sao_Paulo`, moeda BRL
+- [x] Locale `pt_BR`, fuso de exibição `America/Sao_Paulo` (banco em UTC) e traduções da interface
 - [ ] Tokens visuais e `ui.app-shell` no estilo console ([linguagem-visual.md](design/linguagem-visual.md))
 - [ ] Login traduzido e sem cadastro público ([F-01](funcionalidades/F-01-acesso-e-seguranca.md))
 

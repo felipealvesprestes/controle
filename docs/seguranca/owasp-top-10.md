@@ -29,8 +29,8 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 
 | ID | Controle | Verificação | Versão | Status |
 |---|---|---|---|---|
-| SEC-14 | `composer audit` e `npm audit` no CI, falhando em vulnerabilidade alta | CI | v0.1 | 📋 |
-| SEC-15 | Dependabot para Composer, npm e GitHub Actions; actions fixadas por SHA | Configuração do repositório | v0.1 | 🚧 (Dependabot e SHAs já existem; falta npm/composer) |
+| SEC-14 | `composer audit` e `npm audit` no CI, falhando em vulnerabilidade alta | CI | v0.1 | ✅ |
+| SEC-15 | Dependabot para Composer, npm e GitHub Actions; actions fixadas por SHA | Configuração do repositório | v0.1 | ✅ |
 | SEC-16 | Dependência nova só com aprovação e ADR quando relevante; lockfiles versionados | Revisão de PR | v0.1 | ✅ |
 | SEC-17 | Imagem Docker de produção com base fixada por digest e sem ferramentas de build | Revisão do Dockerfile | v0.9 | 📋 |
 
@@ -48,8 +48,8 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 
 | ID | Controle | Verificação | Versão | Status |
 |---|---|---|---|---|
-| SEC-23 | SQL só por Eloquent/Query Builder com bindings; `DB::raw`/`whereRaw` proibidos fora de lista revisada | Teste de arquitetura | v0.1 | 📋 |
-| SEC-24 | Saída sempre escapada (`{{ }}`); `{!! !!}` proibido salvo exceção revisada | Teste que varre as views | v0.1 | 📋 |
+| SEC-23 | SQL só por Eloquent/Query Builder com bindings; `DB::raw`/`whereRaw` proibidos fora de lista revisada | Teste de arquitetura | v0.1 | ✅ |
+| SEC-24 | Saída sempre escapada (`{{ }}`); `{!! !!}` proibido salvo exceção revisada | Teste que varre as views | v0.1 | ✅ |
 | SEC-25 | XML (NFS-e) lido com entidades externas desativadas (XXE) e tamanho máximo | Teste com payload XXE | v1.1 | 📋 |
 | SEC-26 | Exportação CSV neutraliza fórmulas (`=`, `+`, `-`, `@`, tab, CR no início da célula) | Teste com payload | v0.5 | 📋 |
 | SEC-27 | `.xlsx` importado: limite de tamanho, de linhas e de descompressão (zip bomb), sem fórmulas executadas | Teste com arquivo malicioso | v0.5 | 📋 |
@@ -79,7 +79,7 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 | ID | Controle | Verificação | Versão | Status |
 |---|---|---|---|---|
 | SEC-38 | Deploy só pelo CI, a partir da `main` protegida (PR com CI verde obrigatório) | Configuração do GitHub | v0.9 | 📋 |
-| SEC-39 | Nunca `unserialize` de dado externo; payloads da fila assinados (padrão do Laravel) | Teste de arquitetura | v0.1 | 📋 |
+| SEC-39 | Nunca `unserialize` de dado externo; payloads da fila assinados (padrão do Laravel) | Teste de arquitetura | v0.1 | ✅ |
 | SEC-40 | XML de NFS-e anexado tem valor e CNPJ conferidos com o período antes de aceitar | Teste | v1.1 | 📋 |
 
 ## A09 — Security Logging and Alerting Failures

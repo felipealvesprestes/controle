@@ -86,6 +86,7 @@ vendor/bin/sail composer test:coverage
 |---|---|
 | `composer lint` | Formata com Pint |
 | `composer types:check` | PHPStan nível máximo |
+| `composer security:audit` | `composer audit` e `npm audit` (falha com aviso moderado ou maior) |
 | `composer test` | Pint (verificação), PHPStan e testes |
 | `composer test:coverage` | Testes com cobertura mínima de 100% (pcov) |
 
