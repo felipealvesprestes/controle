@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | 📋 Planejado |
+| **Status** | ✅ Implementada (v0.2) |
 | **Rota** | `/admin/users`, `/admin/users/{id}` |
 | **Funcionalidades** | F-01, F-17 |
 | **Acesso** | Navegação → Administração → Usuários (só administradores) |

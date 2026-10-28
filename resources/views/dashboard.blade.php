@@ -2,11 +2,12 @@
     <x-ui.page-header
         :title="__('Dashboard')"
         :description="__(':done of :total setup steps done', ['done' => $stepsDone, 'total' => count($steps)])"
-        :breadcrumbs="[config('app.name') => route('dashboard'), __('Dashboard') => null]"
+        :breadcrumbs="[config('app.name') => null, __('Dashboard') => null]"
     />
 
     <div class="grid gap-6 p-4 sm:p-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
         {{-- Setup: the screen's question is "what is left before I can bill?" --}}
+        @can('dashboard.setup.view')
         <section class="rounded-lg border border-line bg-surface" aria-labelledby="setup-title">
             <div class="flex flex-wrap items-center justify-between gap-3 px-4 pt-5 sm:px-6">
                 <h2 id="setup-title" class="text-base font-medium text-ink">{{ __('Initial setup') }}</h2>
@@ -49,6 +50,7 @@
                 @endforeach
             </ol>
         </section>
+        @endcan
 
         {{-- Billing rule, computed by the domain with the spreadsheet's real October. --}}
         <section class="rounded-lg border border-line bg-surface" aria-labelledby="rule-title">
@@ -59,7 +61,7 @@
 
             <div class="mt-5 border-t border-line px-6 py-5">
                 <p class="text-sm text-muted">{{ __('October 2026, from the spreadsheet') }}</p>
-                <p class="num mt-1 text-[30px] leading-tight font-normal tracking-[-0.01em] text-brand">{{ $example['amount'] }}</p>
+                <p class="num mt-1 text-[30px] leading-tight font-normal tracking-[-0.01em] text-brand"><x-ui.guarded-content permission="dashboard.billing_rule.view">{{ $example['amount'] }}</x-ui.guarded-content></p>
 
                 <dl class="mt-4 space-y-2.5 text-sm">
                     <div class="flex justify-between gap-4">
@@ -72,7 +74,7 @@
                     </div>
                     <div class="flex justify-between gap-4">
                         <dt class="text-muted">{{ __('Rate') }}</dt>
-                        <dd class="num text-ink">{{ $example['rate'] }}/h · {{ $example['pointValue'] }} {{ __('per point') }}</dd>
+                        <dd class="num text-ink"><x-ui.guarded-content permission="dashboard.billing_rule.view">{{ $example['rate'] }}/h · {{ $example['pointValue'] }} {{ __('per point') }}</x-ui.guarded-content></dd>
                     </div>
                 </dl>
             </div>

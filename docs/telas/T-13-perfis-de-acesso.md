@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | 📋 Planejado |
+| **Status** | ✅ Implementada (v0.2) |
 | **Rota** | `/admin/roles`, `/admin/roles/{id}` |
 | **Funcionalidades** | F-17 |
 | **Acesso** | Navegação → Administração → Perfis (só administradores) |

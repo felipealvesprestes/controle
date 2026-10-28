@@ -12,6 +12,10 @@ Mudanças visíveis para quem usa o sistema, por versão. Formato baseado em [Ke
 - Interface em português (pt_BR) e fuso de exibição America/Sao_Paulo.
 - CI barra segredos (gitleaks) e dependências vulneráveis; testes barram SQL cru, saída sem escape e `unserialize`.
 
+- Usuários e perfis de acesso (F-17): convite por e-mail, desativação, administradores, perfis com permissões granulares por menu, página, ação, campo e conteúdo, exceções por usuário e histórico de auditoria.
+- Conteúdo sem permissão aparece mascarado (`•••`); menus e páginas sem permissão não aparecem e respondem 403.
+- Navegação entre telas troca só o conteúdo: barra superior e menu ficam fixos e o CSS não é baixado de novo.
+
 - Seeder do administrador inicial (`AdminUserSeeder`), configurado pelo `.env`, e coluna `is_admin` em `users`.
 
 ### Alterado
@@ -26,6 +30,8 @@ Mudanças visíveis para quem usa o sistema, por versão. Formato baseado em [Ke
 - Trocar o e-mail exige a senha atual; e-mails são salvos em minúsculas (A-02).
 - Trocar ou redefinir a senha encerra as sessões abertas em outros lugares (A-03).
 - Link de redefinição de senha sempre usa o endereço oficial do sistema (A-04).
+- Gerenciar usuários e perfis exige senha recente; desativar um usuário encerra as sessões dele (RN-19).
+- Login recusa contas desativadas com a mesma mensagem de credencial inválida.
 - "Esqueci a senha" responde igual para qualquer e-mail e limita 5 pedidos por minuto (A-05).
 
 ### Adicionado

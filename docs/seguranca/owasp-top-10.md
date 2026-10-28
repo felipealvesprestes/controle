@@ -6,13 +6,13 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 
 | ID | Controle | Verificação | Versão | Status |
 |---|---|---|---|---|
-| SEC-01 | Negado por padrão: sem permissão explícita, nada é acessível (RN-15) | Teste: usuário sem perfil recebe 403 em todas as rotas autenticadas | v0.2 | 📋 |
-| SEC-02 | Toda ação que altera dados checa permissão no caso de uso via `Authorizer`, não só na tela (RN-18) | Teste de arquitetura: casos de uso de escrita recebem `Actor`; teste de 403 por chamada direta ao Livewire | v0.2 | 📋 |
+| SEC-01 | Negado por padrão: sem permissão explícita, nada é acessível (RN-15) | Teste: usuário sem perfil recebe 403 em todas as rotas autenticadas | v0.2 | ✅ |
+| SEC-02 | Toda ação que altera dados checa permissão no caso de uso via `Authorizer`, não só na tela (RN-18) | Teste de arquitetura: casos de uso de escrita recebem `Actor`; teste de 403 por chamada direta ao Livewire | v0.2 | ✅ |
 | SEC-03 | Escopo de dados: usuário sem `*.scope.all` só lê e altera os próprios registros (sem IDOR) | Teste: trocar o ID na requisição retorna 404 | v0.4 | 📋 |
-| SEC-04 | IDs e campos sensíveis de componentes Livewire com `#[Locked]`; nada de confiar em propriedade pública vinda do navegador | Teste: alterar propriedade travada falha | v0.2 | 📋 |
+| SEC-04 | IDs e campos sensíveis de componentes Livewire com `#[Locked]`; nada de confiar em propriedade pública vinda do navegador | Teste: alterar propriedade travada falha | v0.2 | ✅ |
 | SEC-05 | Atribuição em massa bloqueada: `Model::shouldBeStrict()`, `$fillable` explícito, dados entram só por DTO do caso de uso | PHPStan + teste | v0.1 | 📋 |
 | SEC-06 | Arquivos privados (XML, PDF, certificado) fora de `public/`, servidos só por rota autorizada | Teste: acesso sem permissão retorna 403 | v1.1 | 📋 |
-| SEC-07 | Links assinados e com validade para convites e relatório público; revogáveis | Teste: link alterado ou expirado é recusado | v0.2 / backlog | 📋 |
+| SEC-07 | Links assinados e com validade para convites e relatório público; revogáveis | Teste: link alterado ou expirado é recusado | v0.2 / backlog | 🚧 (convite ✅) |
 
 ## A02 — Security Misconfiguration
 
@@ -59,7 +59,7 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 | ID | Controle | Verificação | Versão | Status |
 |---|---|---|---|---|
 | SEC-28 | Toda funcionalidade tem seção "Segurança" com ameaças e casos de abuso antes do código | Revisão de PR | v0.1 | 📋 |
-| SEC-29 | Regras de negócio críticas como invariantes do domínio (período fechado imutável, último administrador) | Testes de domínio | v0.2 | 📋 |
+| SEC-29 | Regras de negócio críticas como invariantes do domínio (período fechado imutável, último administrador) | Testes de domínio | v0.2 | ✅ |
 | SEC-30 | Limites de uso em ações caras (emitir nota, exportar, importar, convidar) | Teste de rate limit | v0.5 | 📋 |
 
 ## A07 — Authentication Failures
@@ -69,8 +69,8 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 | SEC-31 | Rate limit no login, no 2FA e no esqueci a senha (por IP) e na borda (Cloudflare) | Teste + regra na Cloudflare | v0.1 | 🚧 (aplicação ✅, borda 📋) |
 | SEC-32 | Turnstile no login e na recuperação de senha | Teste com token inválido | v0.9 | 📋 |
 | SEC-33 | 2FA obrigatório para administradores | Teste | v0.9 | 📋 |
-| SEC-34 | Reautenticação (senha) para ações sensíveis: 2FA, troca de e-mail, mudar permissões, enviar certificado, emitir/cancelar nota | Teste | v0.2 | 🚧 (2FA e e-mail ✅) |
-| SEC-35 | Sessão regenerada no login, encerrada quando a senha muda, expira por inatividade (administrador: 30 min), encerrada ao desativar usuário (RN-19) | Teste | v0.2 | 🚧 (login e troca de senha ✅) |
+| SEC-34 | Reautenticação (senha) para ações sensíveis: 2FA, troca de e-mail, mudar permissões, enviar certificado, emitir/cancelar nota | Teste | v0.2 | 🚧 (2FA, e-mail e permissões ✅) |
+| SEC-35 | Sessão regenerada no login, encerrada quando a senha muda, expira por inatividade (administrador: 30 min), encerrada ao desativar usuário (RN-19) | Teste | v0.2 | 🚧 (login, troca de senha e desativação ✅; inatividade pendente) |
 | SEC-36 | Mensagens que não revelam se o e-mail existe (login, recuperação, convite) | Teste | v0.1 | 🚧 (login e recuperação ✅, convite 📋) |
 | SEC-37 | Cloudflare Access (e-mail + código) na frente de `/admin` como segunda barreira | Revisão de configuração | v0.9 | 📋 |
 
@@ -86,7 +86,7 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 
 | ID | Controle | Verificação | Versão | Status |
 |---|---|---|---|---|
-| SEC-41 | Registro de auditoria imutável para usuários, permissões e períodos (RN-20) | Teste | v0.2 | 📋 |
+| SEC-41 | Registro de auditoria imutável para usuários, permissões e períodos (RN-20) | Teste | v0.2 | ✅ |
 | SEC-42 | Log de eventos de autenticação: sucesso, falha, bloqueio, 2FA, troca de senha | Teste | v0.2 | 📋 |
 | SEC-43 | Alerta por e-mail ao administrador: muitas falhas de login, mudança de permissões, novo administrador, certificado enviado | Teste | v0.9 | 📋 |
 | SEC-44 | Logs sem segredos nem dados pessoais desnecessários; retenção de 90 dias | Revisão | v0.9 | 📋 |
@@ -96,6 +96,6 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 | ID | Controle | Verificação | Versão | Status |
 |---|---|---|---|---|
 | SEC-45 | Erros mostram página genérica com código de referência; detalhe só no log | Teste | v0.1 | 📋 |
-| SEC-46 | Falha na checagem de permissão nega o acesso (fail closed) | Teste | v0.2 | 📋 |
+| SEC-46 | Falha na checagem de permissão nega o acesso (fail closed) | Teste | v0.2 | ✅ |
 | SEC-47 | Casos de uso de escrita em transação; nada fica pela metade | Teste | v0.4 | 📋 |
 | SEC-48 | Chamadas externas (Emissor Nacional, e-mail) com timeout, nova tentativa limitada e idempotência | Teste | v1.2 | 📋 |

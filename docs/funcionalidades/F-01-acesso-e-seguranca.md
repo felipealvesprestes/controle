@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | 📋 Planejado |
+| **Status** | 🚧 Em andamento (2FA obrigatório para administrador na v1.0) |
 | **Versão** | v0.1 (ajustes do starter kit), v0.2 (convites), v1.0 (2FA obrigatório para administradores) |
 | **Telas** | T-01, T-10, T-12 |
 | **Regras** | RN-17, RN-19 |
@@ -23,10 +23,10 @@ Só pessoas cadastradas pelo administrador acessam o sistema. Como ele guardará
 
 ## Critérios de aceite
 
-- [ ] A rota de registro não existe.
-- [ ] Convite expirado ou já usado mostra mensagem clara e não cria sessão.
+- [x] A rota de registro não existe.
+- [x] Convite expirado ou já usado mostra mensagem clara e não cria sessão (broker `invites`, validade de 72 h).
 - [ ] Administrador sem 2FA é levado à configuração antes de usar o sistema (v1.0).
-- [ ] Login com rate limit (5 tentativas/minuto por e-mail + IP).
+- [x] Login com rate limit (5 tentativas/minuto por e-mail + IP).
 
 ## Fora de escopo
 

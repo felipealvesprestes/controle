@@ -41,11 +41,14 @@ Base técnica e visual sobre a qual todo o resto é construído.
 - [x] Tokens visuais e app shell no estilo console (referência: telas do GCP) ([linguagem-visual.md](design/linguagem-visual.md))
 - [x] Login traduzido e sem cadastro público ([F-01](funcionalidades/F-01-acesso-e-seguranca.md))
 
-### v0.2 — Acesso · 📋 Planejado
+### v0.2 — Acesso · 🚧 Em andamento
 
-- [ ] [F-17 Usuários e permissões](funcionalidades/F-17-usuarios-e-permissoes.md): catálogo, perfis, exceções, "ver como", auditoria
-- [ ] [F-01 Acesso e segurança](funcionalidades/F-01-acesso-e-seguranca.md): convite por e-mail, desativação
-- [ ] Componentes `ui.guarded` e `ui.guarded-content`
+- [x] [F-17 Usuários e permissões](funcionalidades/F-17-usuarios-e-permissoes.md): catálogo, perfis, exceções, auditoria
+- [ ] F-17 "Ver como": pré-visualização da navegação com as permissões do usuário (hoje a aba Permissões mostra o estado efetivo e a origem de cada item)
+- [x] [F-01 Acesso e segurança](funcionalidades/F-01-acesso-e-seguranca.md): convite por e-mail, desativação
+- [x] Componente `ui.guarded-content` (os demais elementos usam `@can`)
+- [x] Navegação sem recarregar a página: barra e menu persistem entre telas, sem baixar o CSS de novo
+- [ ] Auditoria `quick` do diff da v0.1 + v0.2
 
 ### v0.3 — Cadastros · 📋 Planejado
 

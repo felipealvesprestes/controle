@@ -132,13 +132,14 @@ Flux é a base de comportamento (acessibilidade, teclado, modais). A aparência 
 
 | Componente | Status |
 |---|---|
-| Layout `layouts/app/console` (barra superior + navegação + conteúdo) | ✅ v0.1 |
+| Layout `layouts/app/console` (barra superior + navegação + conteúdo); barra e menu ficam em `@persist` e o item ativo vem de `wire:current`, então a navegação troca só o conteúdo | ✅ v0.1 |
 | `ui.nav-item`, `ui.tab` | ✅ v0.1 |
 | `ui.page-header` (breadcrumb, título, ações) | ✅ v0.1 |
 | `ui.filter-bar` | 📋 Planejado |
 | `ui.data-table` | 📋 Planejado |
-| `ui.side-panel` | 📋 Planejado |
+| `ui.side-panel` | ✅ v0.2 |
 | `ui.status` (ícone + texto) | 📋 Planejado |
 | `ui.key-value` (lista de propriedades do detalhe) | 📋 Planejado |
 | `ui.empty-state` | 📋 Planejado |
-| `ui.guarded` (renderiza só com permissão) | 📋 Planejado |
+| `ui.guarded-content` (mascara conteúdo sem permissão com `•••`) | ✅ v0.2 |
+| `ui.audit-list` (aba Histórico) | ✅ v0.2 |

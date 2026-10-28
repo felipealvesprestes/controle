@@ -6,6 +6,7 @@ use App\Http\Middleware\RequireRecentPasswordConfirmation;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Livewire;
@@ -27,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
         $this->configureLivewire();
+
+        // No <link rel="preload"> tags: wire:navigate re-inserts them on every visit and the browser downloads the CSS again.
+        Vite::usePreloadTagAttributes(false);
     }
 
     /**

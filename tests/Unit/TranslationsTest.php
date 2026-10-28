@@ -11,7 +11,7 @@ it('translates every interface string into pt_BR', function () {
         preg_match_all('/__\(\s*([\'"])(.+?)(?<!\\\\)\1/', $file->getContents(), $matches);
 
         foreach ($matches[2] as $key) {
-            $isGroupKey = preg_match('/^[a-z_]+\.[a-z_.]+$/', $key) === 1;
+            $isGroupKey = preg_match('/^[a-z_]+\.[a-z_.]*$/', $key) === 1;
 
             if (! $isGroupKey && ! array_key_exists(stripslashes($key), $translations)) {
                 $missing[] = $key;

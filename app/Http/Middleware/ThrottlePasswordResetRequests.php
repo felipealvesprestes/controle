@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Limits password reset requests per IP; Fortify registers these routes without a limiter — A-05.
+ * Limits password reset and invitation requests per IP; Fortify registers these routes without a limiter — A-05.
  */
 final class ThrottlePasswordResetRequests
 {
@@ -24,7 +24,7 @@ final class ThrottlePasswordResetRequests
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->isMethod('POST') || ! $request->routeIs('password.email', 'password.update')) {
+        if (! $request->isMethod('POST') || ! $request->routeIs('password.email', 'password.update', 'invitation.store')) {
             return $next($request);
         }
 

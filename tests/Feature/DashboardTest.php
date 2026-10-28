@@ -7,8 +7,8 @@ test('guests are redirected to the login page', function () {
     $response->assertRedirect(route('login'));
 });
 
-test('authenticated users can visit the dashboard', function () {
-    $user = User::factory()->create();
+test('administrators can visit the dashboard', function () {
+    $user = User::factory()->admin()->create();
     $this->actingAs($user);
 
     $response = $this->get(route('dashboard'));
@@ -16,7 +16,7 @@ test('authenticated users can visit the dashboard', function () {
 });
 
 test('dashboard shows the billing rule computed from the spreadsheet october', function () {
-    $this->actingAs(User::factory()->create())
+    $this->actingAs(User::factory()->admin()->create())
         ->get(route('dashboard'))
         ->assertOk()
         ->assertSee('R$ 1.335,00')

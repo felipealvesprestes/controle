@@ -99,6 +99,14 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        // Single-use invitation links (F-01): 72 hours, separate token table.
+        'invites' => [
+            'provider' => 'users',
+            'table' => 'invitation_tokens',
+            'expire' => 4320,
+            'throttle' => 60,
+        ],
     ],
 
     /*

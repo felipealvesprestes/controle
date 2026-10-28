@@ -41,6 +41,10 @@ flowchart LR
 
 O volume `data` guarda `storage/app/private` (XML/PDF das notas, certificado). O banco fica no MySQL gerenciado.
 
+### Cache dos arquivos estáticos
+
+Os arquivos de `public/build/` têm hash no nome; o Caddy deve servi-los com `Cache-Control: public, max-age=31536000, immutable`, e a Cloudflare os mantém em cache. Assim, a primeira tela baixa CSS e JS uma vez e as navegações seguintes (via `wire:navigate`) buscam só o HTML da página.
+
 ## Pipeline
 
 1. Push na `main` → GitHub Actions roda Pint, Larastan e Pest.

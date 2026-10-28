@@ -1,10 +1,13 @@
 <?php
 
+use App\Domain\Access\AccessDenied;
+use App\Http\Middleware\EnsureUserIsActive;
 use App\Http\Middleware\ThrottlePasswordResetRequests;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -18,10 +21,13 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // Reject requests for hosts other than APP_URL's (A-04) and throttle password resets (A-05).
         $middleware->trustHosts();
-        $middleware->web(append: [ThrottlePasswordResetRequests::class]);
+        $middleware->web(append: [ThrottlePasswordResetRequests::class, EnsureUserIsActive::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
+
+        // A use case refusing the actor is a 403, never a 500 (RN-18).
+        $exceptions->map(AccessDenied::class, fn (AccessDenied $exception) => new AccessDeniedHttpException($exception->getMessage(), $exception));
     })->create();
