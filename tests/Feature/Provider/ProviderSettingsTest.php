@@ -11,6 +11,7 @@ use App\Livewire\Settings\CompanyDetailsSettings;
 use App\Models\AuditLog;
 use App\Models\ProviderProfile;
 use App\Models\User;
+use Illuminate\Support\Facades\Http;
 use Livewire\Livewire;
 
 /**
@@ -47,6 +48,9 @@ function companyInput(array $overrides = []): array
         ...$overrides,
     ];
 }
+
+// Filling the CEP looks the address up; these tests answer with the same address they type.
+beforeEach(fn () => Http::fake(['viacep.com.br/*' => Http::response(['logradouro' => 'Rua Exemplo', 'bairro' => 'Centro', 'localidade' => 'Canoas', 'uf' => 'RS'])]));
 
 describe('screens', function () {
     it('renders both settings pages and the menu for an administrator', function () {
@@ -161,7 +165,7 @@ describe('company details', function () {
         'invalid CNPJ check digits' => [['cnpj' => '11.222.333/0001-82'], 'cnpj'],
         'long trade name' => [['tradeName' => str_repeat('a', 256)], 'tradeName'],
         'municipal registration with symbols' => [['municipalRegistration' => '12<script>'], 'municipalRegistration'],
-        'unknown state' => [['state' => 'XX'], 'state'],
+        'unknown state, typed without CEP' => [['state' => 'XX', 'zipCode' => ''], 'state'],
         'short CEP' => [['zipCode' => '9201'], 'zipCode'],
     ]);
 

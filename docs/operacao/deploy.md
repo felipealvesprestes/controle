@@ -74,6 +74,7 @@ Ficam no `.env` do servidor, nunca no repositório: `APP_KEY`, credenciais do ba
 Controles completos e status em [seguranca/owasp-top-10.md](../seguranca/owasp-top-10.md). Na infraestrutura:
 
 - Firewall da DO: nenhuma porta web aberta; apenas 22 (SSH com chave) de IPs autorizados. Entrada HTTP só pelo Cloudflare Tunnel (SEC-11).
+- Saída HTTPS liberada para `viacep.com.br` (busca de CEP, [ADR-0013](../arquitetura/adr/0013-busca-de-cep.md)). Se a saída for restrita por lista, incluir esse domínio.
 - Cloudflare: TLS Full (strict), HSTS, WAF, rate limit em login e 2FA, Turnstile, Access em `/admin/*` ([ADR-0010](../arquitetura/adr/0010-cloudflare-na-borda.md)).
 - Atualizações automáticas de segurança do Ubuntu; usuário de deploy sem senha e sem acesso root direto.
 - 2FA obrigatório para administradores; cadastro público desativado ([F-01](../funcionalidades/F-01-acesso-e-seguranca.md)).

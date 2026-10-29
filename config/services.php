@@ -28,6 +28,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    // CEP directory used to fill addresses (ADR-0013).
+    'viacep' => [
+        'url' => env('VIACEP_URL', 'https://viacep.com.br/'),
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),

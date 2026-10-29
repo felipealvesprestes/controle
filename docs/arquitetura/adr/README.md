@@ -16,3 +16,4 @@ Cada decisão técnica relevante vira um arquivo numerado, criado a partir de [_
 | [0010](0010-cloudflare-na-borda.md) | Cloudflare na borda: Tunnel, WAF, Turnstile, Access | Aceita |
 | [0011](0011-auditoria-de-seguranca.md) | Auditoria com OWASP e a skill `security-audit` da Cloudflare | Aceita |
 | [0012](0012-mysql-e-sail.md) | MySQL como banco oficial e Sail no desenvolvimento | Aceita |
+| [0013](0013-busca-de-cep.md) | Busca de endereço pelo CEP com a ViaCEP | Aceita |

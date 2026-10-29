@@ -27,9 +27,12 @@
             <h2 id="address-title" class="text-base font-medium text-ink">{{ __('Address') }}</h2>
 
             <div class="mt-5 grid gap-5 sm:grid-cols-6">
-                <flux:input wire:model="zipCode" :label="__('CEP')" inputmode="numeric" autocomplete="postal-code" :disabled="$readOnly" class="font-mono sm:col-span-2" placeholder="00000-000" />
+                <div class="sm:col-span-2">
+                    <flux:input wire:model.live.debounce.500ms="zipCode" :label="__('CEP')" :description="__('Fills street, district, city and state.')" inputmode="numeric" autocomplete="postal-code" :disabled="$readOnly" class="font-mono" placeholder="00000-000" data-test="zip-code-input" />
+                    <p wire:loading wire:target="zipCode" class="mt-1.5 text-xs text-muted">{{ __('Looking up the CEP…') }}</p>
+                </div>
                 <flux:input wire:model="street" :label="__('Street')" autocomplete="address-line1" :disabled="$readOnly" class="sm:col-span-4" />
-                <flux:input wire:model="number" :label="__('Number')" autocomplete="off" :disabled="$readOnly" class="sm:col-span-2" />
+                <flux:input wire:model="number" id="company-number" :label="__('Number')" autocomplete="off" :disabled="$readOnly" class="sm:col-span-2" />
                 <flux:input wire:model="complement" :label="__('Complement')" autocomplete="address-line2" :disabled="$readOnly" class="sm:col-span-4" />
                 <flux:input wire:model="district" :label="__('District')" autocomplete="off" :disabled="$readOnly" class="sm:col-span-2" />
                 <flux:input wire:model="city" :label="__('City')" autocomplete="address-level2" :disabled="$readOnly" class="sm:col-span-3" />

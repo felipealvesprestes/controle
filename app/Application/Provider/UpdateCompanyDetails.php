@@ -5,6 +5,7 @@ namespace App\Application\Provider;
 use App\Domain\Access\AccessDenied;
 use App\Domain\Access\AuditTrail;
 use App\Domain\Access\Authorizer;
+use App\Domain\Address\BrazilianStates;
 use App\Domain\Provider\CompanyDetails;
 use App\Domain\Provider\ProviderProfileRepository;
 use App\Domain\Provider\ProviderRuleViolation;
@@ -18,9 +19,6 @@ use InvalidArgumentException;
  */
 final class UpdateCompanyDetails
 {
-    /** Brazilian states, for the address. */
-    public const array STATES = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'];
-
     public function __construct(
         private readonly Authorizer $authorizer,
         private readonly ProviderProfileRepository $profiles,
@@ -60,7 +58,7 @@ final class UpdateCompanyDetails
 
         $state = strtoupper($text['state']);
 
-        if ($state !== '' && ! in_array($state, self::STATES, true)) {
+        if ($state !== '' && ! in_array($state, BrazilianStates::CODES, true)) {
             throw new ProviderRuleViolation('state', 'Choose a state.');
         }
 

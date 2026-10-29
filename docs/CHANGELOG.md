@@ -12,6 +12,7 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 - Dados da empresa (F-02): razão social, nome fantasia, CNPJ (numérico ou alfanumérico), inscrição municipal e endereço.
 - Grupo Configurações no menu, com permissões próprias para ver a taxa e para alterar cada tela.
 - O passo "Dados da empresa" do Painel passa a valer e leva à tela.
+- Endereço preenchido pelo CEP (ViaCEP): logradouro, bairro, cidade e UF, com aviso quando o CEP não existe ou a busca não responde (ADR-0013).
 
 ### Segurança
 

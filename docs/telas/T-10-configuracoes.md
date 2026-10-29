@@ -45,7 +45,7 @@ Agrupar tudo que se configura raramente. Cada item abre uma subpágina.
 | Item | Funcionalidade | Observação |
 |---|---|---|
 | Taxa padrão, Arredondamento | F-02 | `/settings/billing` (Padrões de cobrança). Exemplo ao vivo do arredondamento |
-| Dados da empresa, Nota fiscal | F-02, F-12 | `/settings/company` (Dados da empresa) na v0.3; Códigos de serviço confirmados com o contador |
+| Dados da empresa, Nota fiscal | F-02, F-12 | `/settings/company` (Dados da empresa) na v0.3, com busca de endereço pelo CEP; Códigos de serviço confirmados com o contador |
 | Certificado A1 | F-12 | Envio, validade, teste em homologação |
 | Pró-labore e folha | F-14 | Tabela mês a mês |
 | Importar planilha | F-07 | Envio, prévia, confirmação |
