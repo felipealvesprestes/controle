@@ -36,3 +36,5 @@ Transformar os lançamentos do mês de um cliente numa cobrança fechada, com um
 ## Notas técnicas
 
 Casos de uso: `CloseBillingPeriod`, `ReopenBillingPeriod`, `AttachManualInvoice`, `RegisterPayment`, `UndoPayment`. Evento `PeriodClosed` dispara a geração do PDF ([F-09](F-09-relatorio-do-periodo.md)).
+
+Ponto de partida deixado pela v0.4: a tabela `billing_periods` já existe só com `client_id`, `month` e `status` (as colunas do snapshot entram aqui); `BillingPeriodRepository::forMonth` cria o período no primeiro lançamento; `EntryRules` recusa lançar, alterar e excluir fora de período aberto. **Concorrência:** `CloseBillingPeriod` deve travar a linha do período (`lockForUpdate`) e `forMonth` deve travá-la também ao lançar, para que um lançamento não entre entre a checagem e o fechamento (run-4).

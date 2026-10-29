@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\TimeEntry;
 use App\Models\User;
 
 test('guests are redirected to the login page', function () {
@@ -35,6 +36,17 @@ test('dashboard setup counts only what is really done', function () {
 
     $this->actingAs($user)->get(route('dashboard'))
         ->assertViewHas('stepsDone', 2);
+});
+
+test('dashboard marks the first time entry once the user logged one — F-05', function () {
+    $user = User::factory()->admin()->create();
+    TimeEntry::factory()->running()->create(['user_id' => $user->id]);
+
+    $this->actingAs($user)->get(route('dashboard'))->assertViewHas('stepsDone', 2)->assertSee(route('time.today'));
+
+    TimeEntry::factory()->create(['user_id' => $user->id, 'started_at' => now()->subHours(5)]);
+
+    $this->actingAs($user)->get(route('dashboard'))->assertViewHas('stepsDone', 3);
 });
 
 test('sidebar footer shows the configured version', function () {

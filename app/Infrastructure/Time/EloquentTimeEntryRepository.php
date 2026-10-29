@@ -76,6 +76,11 @@ final class EloquentTimeEntryRepository implements TimeEntryRepository
         TimeEntryModel::query()->whereKey($id)->delete();
     }
 
+    public function userHasEntries(int $userId): bool
+    {
+        return TimeEntryModel::query()->where('user_id', $userId)->whereNotNull('ended_at')->exists();
+    }
+
     public function clientHasEntries(int $clientId): bool
     {
         return TimeEntryModel::query()->where('client_id', $clientId)->exists();

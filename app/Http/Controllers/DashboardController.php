@@ -11,6 +11,7 @@ use App\Domain\Shared\HourlyRate;
 use App\Domain\Shared\Minutes;
 use App\Domain\Shared\Money;
 use App\Domain\Shared\Points;
+use App\Domain\Time\TimeEntryRepository;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -23,7 +24,7 @@ final class DashboardController extends Controller
     /** Hourly rate charged in the spreadsheet, in cents. */
     private const int SPREADSHEET_RATE_CENTS = 6000;
 
-    public function __invoke(Request $request, BillingCalculator $calculator, ProviderProfileRepository $profiles, ClientRepository $clients): View
+    public function __invoke(Request $request, BillingCalculator $calculator, ProviderProfileRepository $profiles, ClientRepository $clients, TimeEntryRepository $entries): View
     {
         /** @var User $user */
         $user = $request->user();
@@ -33,7 +34,7 @@ final class DashboardController extends Controller
             ['title' => __('Two-factor authentication'), 'description' => __('Protects the account that will hold the company certificate.'), 'done' => $user->two_factor_confirmed_at !== null, 'action' => route('security.edit'), 'version' => null],
             ['title' => __('Company details'), 'description' => __('Legal name, CNPJ and address for the report and the invoice.'), 'done' => $profiles->companyDetails()->isComplete(), 'action' => $user->can('settings.company.page') ? route('settings.company.edit') : null, 'version' => null],
             ['title' => __('First client and rate'), 'description' => __('Who is billed, and at what rate.'), 'done' => $clients->hasActiveClients(), 'action' => $user->can('client.view') ? route('clients.index') : null, 'version' => null],
-            ['title' => __('First time entry'), 'description' => __('Timer or manual entry, from the phone or the computer.'), 'done' => false, 'action' => null, 'version' => 'v0.4'],
+            ['title' => __('First time entry'), 'description' => __('Timer or manual entry, from the phone or the computer.'), 'done' => $entries->userHasEntries($user->id), 'action' => $user->can('time.entry.view') ? route('time.today') : null, 'version' => null],
         ];
 
         $rate = HourlyRate::of(Money::fromCents(self::SPREADSHEET_RATE_CENTS));

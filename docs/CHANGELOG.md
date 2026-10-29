@@ -6,6 +6,8 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 
 ## [Não publicado]
 
+## [0.4.0] — 2026-10-29 · Lançamentos
+
 ### Adicionado
 
 - Tela Hoje (T-02): cronômetro com cliente e categoria, tempo contado a partir do início (não perde tempo com o celular bloqueado), parar com descrição e referência, ajustar início e descartar; lista e total do dia com valor parcial.
@@ -22,6 +24,13 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 
 - Ao entrar, quem pode lançar horas vai direto para Hoje.
 - Cliente ou categoria com lançamentos não pode mais ser excluído, só inativado (RN-13).
+- A etapa "Primeiro lançamento" do Painel passa a valer e leva a Hoje.
+- O rodapé do menu mostra v0.4.0.
+
+### Segurança
+
+- Sem a permissão de ver todos, o lançamento de outra pessoa responde "não existe mais" em editar, duplicar, excluir e desfazer (SEC-03).
+- Excluir um cliente ou uma categoria enquanto alguém lança horas para ele mostra a recusa do RN-13 em vez de erro 500 (A-16).
 
 ## [0.3.0] — 2026-10-29 · Cadastros
 

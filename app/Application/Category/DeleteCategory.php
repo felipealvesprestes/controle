@@ -8,6 +8,7 @@ use App\Domain\Access\Authorizer;
 use App\Domain\Category\CategoryRepository;
 use App\Domain\Category\CategoryRuleViolation;
 use App\Domain\Time\TimeEntryRepository;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -30,13 +31,20 @@ final class DeleteCategory
 
         $category = $this->categories->find($categoryId) ?? throw new CategoryRuleViolation('category', 'This category no longer exists.');
 
-        DB::transaction(function () use ($actorId, $categoryId, $category): void {
-            if ($this->entries->categoryHasEntries($categoryId)) {
-                throw new CategoryRuleViolation('category', 'This category has time entries. Deactivate it instead.');
-            }
+        $hasEntries = new CategoryRuleViolation('category', 'This category has time entries. Deactivate it instead.');
 
-            $this->categories->delete($categoryId);
-            $this->audit->record($actorId, 'category.deleted', 'category', $categoryId, $category->toArray(), null);
-        });
+        try {
+            DB::transaction(function () use ($actorId, $categoryId, $category, $hasEntries): void {
+                if ($this->entries->categoryHasEntries($categoryId)) {
+                    throw $hasEntries;
+                }
+
+                $this->categories->delete($categoryId);
+                $this->audit->record($actorId, 'category.deleted', 'category', $categoryId, $category->toArray(), null);
+            });
+        } catch (QueryException $exception) {
+            // MySQL 1451: an entry arrived between the check and the delete, and the foreign key kept the category (A-16).
+            throw ($exception->errorInfo[1] ?? null) === 1451 ? $hasEntries : $exception;
+        }
     }
 }

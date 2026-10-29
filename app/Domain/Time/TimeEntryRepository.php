@@ -33,6 +33,8 @@ interface TimeEntryRepository
 
     public function delete(int $id): void;
 
+    public function userHasEntries(int $userId): bool;
+
     public function clientHasEntries(int $clientId): bool;
 
     public function categoryHasEntries(int $categoryId): bool;

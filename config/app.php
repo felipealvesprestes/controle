@@ -19,7 +19,7 @@ return [
     | Version shown in the sidebar footer. Bump it when a roadmap version closes.
     */
 
-    'version' => '0.3.0',
+    'version' => '0.4.0',
 
     /*
     |--------------------------------------------------------------------------
