@@ -13,6 +13,12 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 - Grupo Configurações no menu, com permissões próprias para ver a taxa e para alterar cada tela.
 - O passo "Dados da empresa" do Painel passa a valer e leva à tela.
 - Endereço preenchido pelo CEP (ViaCEP): logradouro, bairro, cidade e UF, com aviso quando o CEP não existe ou a busca não responde (ADR-0013).
+- Clientes (F-03): lista com abas Ativos e Inativos, cadastro rápido pelo painel lateral e página do cliente com nome curto, cor, política de arredondamento, CPF ou CNPJ, razão social, e-mail, retém ISS e endereço pelo CEP.
+- Taxas por cliente com vigência (RN-04): a vigente em destaque, reajustes programados por data e o padrão do prestador quando o cliente não tem taxa própria.
+- Aviso de dados fiscais incompletos, dizendo o que falta para a nota.
+- Inativar, reativar e excluir cliente, com histórico de todas as alterações.
+- Grupo Cadastros no menu e permissões próprias para ver CPF/CNPJ e endereço, ver e alterar taxas, alterar, inativar e excluir clientes.
+- O passo "Primeiro cliente e taxa" do Painel passa a valer e leva à lista.
 
 ### Alterado
 
@@ -21,6 +27,8 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 ### Segurança
 
 - Taxa horária limitada a R$ 100.000,00; valores maiores davam erro 500 em vez de erro de validação (A-11).
+- Dois cadastros de cliente com o mesmo nome ao mesmo tempo mostram erro no campo em vez de erro 500 (A-12).
+- Excluir um cliente deixa só o nome no histórico, sem CPF, e-mail ou endereço.
 
 ## [0.2.0] — 2026-10-29 · Acesso
 

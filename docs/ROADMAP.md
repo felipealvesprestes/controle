@@ -52,7 +52,7 @@ Base técnica e visual sobre a qual todo o resto é construído.
 ### v0.3 — Cadastros · 🚧 Em andamento
 
 - [x] [F-02 Configurações do prestador](funcionalidades/F-02-configuracoes-do-prestador.md)
-- [ ] [F-03 Clientes e taxas](funcionalidades/F-03-clientes-e-taxas.md)
+- [x] [F-03 Clientes e taxas](funcionalidades/F-03-clientes-e-taxas.md)
 - [ ] [F-04 Categorias](funcionalidades/F-04-categorias.md)
 
 ### v0.4 — Lançamentos · 📋 Planejado

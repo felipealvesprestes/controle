@@ -77,23 +77,23 @@ Tabela do starter kit, com colunas adicionais:
 | Coluna | Tipo | Observação |
 |---|---|---|
 | id | int | |
-| name | string | Nome curto exibido nas telas |
-| legal_name | string | Razão social (tomador da nota) |
-| document | string | CPF ou CNPJ, só dígitos |
-| email | string, nulo | |
-| rounding_policy | enum, nulo | Nulo = usa o padrão do prestador |
+| name | string(60), único | Nome curto exibido nas telas |
+| color | string | Uma das 8 cores de `ClientColor` |
+| rounding_policy | string, nulo | Nulo = usa o padrão do prestador (RN-06) |
+| legal_name | string, vazio | Razão social ou nome completo (tomador da nota) |
+| document | string(14), nulo | CPF (11) ou CNPJ (14, pode ter letras), sem pontuação |
+| email | string, vazio | Guardado em minúsculas |
 | withholds_iss | bool | Cliente retém ISS |
-| address_* | string, nulo | Obrigatório para emitir nota |
-| color | string | Cor do cliente nas listas |
+| address_street, address_number, address_complement, address_district, address_city, address_state, address_zip_code | string, vazio | Mesmo formato de `provider_profiles`; completos (menos o complemento) para emitir nota |
 | active | bool | RN-13 |
 
 ### client_rates — RN-04
 
 | Coluna | Tipo | Observação |
 |---|---|---|
-| client_id | fk | |
-| rate_cents | int | |
-| valid_from | date | Único por cliente |
+| client_id | fk | Apagada junto com o cliente |
+| rate_cents | int | Até `HourlyRate::MAX_CENTS` |
+| valid_from | date | Único por cliente (índice `client_id` + `valid_from`) |
 
 ### categories — [F-04](../funcionalidades/F-04-categorias.md)
 

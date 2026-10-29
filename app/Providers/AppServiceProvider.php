@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Domain\Address\AddressLookup;
+use App\Domain\Client\ClientRepository;
 use App\Domain\Provider\ProviderProfileRepository;
 use App\Http\Middleware\RequireRecentPasswordConfirmation;
 use App\Infrastructure\Address\ViaCepAddressLookup;
+use App\Infrastructure\Client\EloquentClientRepository;
 use App\Infrastructure\Provider\EloquentProviderProfileRepository;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
@@ -24,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(ProviderProfileRepository::class, EloquentProviderProfileRepository::class);
         $this->app->bind(AddressLookup::class, ViaCepAddressLookup::class);
+        $this->app->bind(ClientRepository::class, EloquentClientRepository::class);
     }
 
     /**

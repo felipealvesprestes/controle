@@ -27,6 +27,6 @@ Os formulários de endereço (dados da empresa no F-02, clientes no F-03) devem 
 ## Consequências
 
 - O servidor de produção precisa de saída HTTPS para `viacep.com.br` (ver [operacao/deploy.md](../../operacao/deploy.md)).
-- O CEP digitado é enviado à ViaCEP. Para a empresa é dado público; quando o F-03 usar a busca para clientes pessoa física, registrar isso na seção de privacidade do F-03.
+- O CEP digitado é enviado à ViaCEP. Para a empresa é dado público; para clientes pessoa física, está registrado na seção de privacidade do [F-03](../../funcionalidades/F-03-clientes-e-taxas.md), e a página do cliente avisa quando o documento é um CPF.
 - Os testes nunca chamam serviços externos: `Http::preventStrayRequests()` no `TestCase` faz qualquer chamada não simulada falhar.
 - O código IBGE do município, que a ViaCEP também devolve, não é guardado agora; entra com a NFS-e (v1.1) se o Emissor Nacional exigir.

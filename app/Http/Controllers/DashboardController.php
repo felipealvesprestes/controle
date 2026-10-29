@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Domain\Billing\BillableEntry;
 use App\Domain\Billing\BillingCalculator;
 use App\Domain\Billing\Rounding\RoundUpPerPeriod;
+use App\Domain\Client\ClientRepository;
 use App\Domain\Provider\ProviderProfileRepository;
 use App\Domain\Shared\HourlyRate;
 use App\Domain\Shared\Minutes;
@@ -22,7 +23,7 @@ final class DashboardController extends Controller
     /** Hourly rate charged in the spreadsheet, in cents. */
     private const int SPREADSHEET_RATE_CENTS = 6000;
 
-    public function __invoke(Request $request, BillingCalculator $calculator, ProviderProfileRepository $profiles): View
+    public function __invoke(Request $request, BillingCalculator $calculator, ProviderProfileRepository $profiles, ClientRepository $clients): View
     {
         /** @var User $user */
         $user = $request->user();
@@ -31,7 +32,7 @@ final class DashboardController extends Controller
             ['title' => __('Administrator account'), 'description' => __('You will manage users and permissions.'), 'done' => $user->is_admin, 'action' => null, 'version' => null],
             ['title' => __('Two-factor authentication'), 'description' => __('Protects the account that will hold the company certificate.'), 'done' => $user->two_factor_confirmed_at !== null, 'action' => route('security.edit'), 'version' => null],
             ['title' => __('Company details'), 'description' => __('Legal name, CNPJ and address for the report and the invoice.'), 'done' => $profiles->companyDetails()->isComplete(), 'action' => $user->can('settings.company.page') ? route('settings.company.edit') : null, 'version' => null],
-            ['title' => __('First client and rate'), 'description' => __('Who is billed, and at what rate.'), 'done' => false, 'action' => null, 'version' => 'v0.3'],
+            ['title' => __('First client and rate'), 'description' => __('Who is billed, and at what rate.'), 'done' => $clients->hasActiveClients(), 'action' => $user->can('client.view') ? route('clients.index') : null, 'version' => null],
             ['title' => __('First time entry'), 'description' => __('Timer or manual entry, from the phone or the computer.'), 'done' => false, 'action' => null, 'version' => 'v0.4'],
         ];
 

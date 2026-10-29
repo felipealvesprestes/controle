@@ -2,17 +2,13 @@
 
 namespace App\Livewire\Settings;
 
-use App\Application\Address\LookUpZipCode;
 use App\Application\Provider\UpdateCompanyDetails;
-use App\Domain\Address\AddressLookupUnavailable;
-use App\Domain\Address\BrazilianStates;
-use App\Domain\Address\ZipCodeLookupRefused;
 use App\Domain\Provider\CompanyDetails;
 use App\Domain\Provider\ProviderProfileRepository;
 use App\Domain\Provider\ProviderRuleViolation;
+use App\Livewire\Concerns\FillsAddressFromZipCode;
 use Flux\Flux;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -21,6 +17,8 @@ use Livewire\Component;
  */
 class CompanyDetailsSettings extends Component
 {
+    use FillsAddressFromZipCode;
+
     public string $legalName = '';
 
     public string $tradeName = '';
@@ -48,46 +46,9 @@ class CompanyDetailsSettings extends Component
         $this->fillFrom($profiles->companyDetails());
     }
 
-    /**
-     * Fills the address as soon as the CEP has 8 digits, like most Brazilian forms. Number and complement stay as typed.
-     */
     public function updatedZipCode(): void
     {
-        $digits = (string) preg_replace('/\D/', '', $this->zipCode);
-
-        if (strlen($digits) !== 8 || Gate::denies('settings.company.edit')) {
-            return;
-        }
-
-        $this->resetErrorBag('zipCode');
-
-        try {
-            $suggestion = app(LookUpZipCode::class)->handle((int) Auth::id(), 'settings.company.edit', $digits);
-        } catch (ZipCodeLookupRefused $refused) {
-            $this->addError('zipCode', __($refused->getMessage()));
-
-            return;
-        } catch (AddressLookupUnavailable) {
-            $this->addError('zipCode', __('The CEP lookup is unavailable right now. Fill in the address.'));
-
-            return;
-        }
-
-        if ($suggestion === null) {
-            $this->addError('zipCode', __('CEP not found. Check it or fill in the address.'));
-
-            return;
-        }
-
-        $this->zipCode = substr($digits, 0, 5).'-'.substr($digits, 5);
-
-        foreach (['street' => $suggestion->street, 'district' => $suggestion->district, 'city' => $suggestion->city, 'state' => $suggestion->state] as $field => $value) {
-            if ($value !== '') {
-                $this->{$field} = $value;
-            }
-        }
-
-        $this->js("document.getElementById('company-number')?.focus()");
+        $this->fillAddressFromZipCode('settings.company.edit', 'company-number');
     }
 
     public function save(UpdateCompanyDetails $updateCompanyDetails): void
@@ -135,8 +96,6 @@ class CompanyDetailsSettings extends Component
 
     public function render(): View
     {
-        return view('livewire.settings.company-details-settings', [
-            'states' => BrazilianStates::CODES,
-        ])->title(__('Company details'));
+        return view('livewire.settings.company-details-settings')->title(__('Company details'));
     }
 }

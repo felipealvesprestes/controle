@@ -99,6 +99,8 @@ Fontes servidas localmente pelo pacote `@fontsource` (sem CDN, nem no build). In
 
 Tema escuro: mesmos tokens com valores próprios, fundo `#15171a`, superfície `#1c1f23`, linha `#2c3036`, acento `#4fb3bb`.
 
+**Cores dos clientes** (`--color-client-*`, v0.3): petróleo, verde, âmbar, vermelho, violeta, azul, rosa e grafite, cada uma com valor próprio no tema escuro. São marcadores de dado (o ponto ao lado do nome), nunca fundo de superfície nem de botão. O ícone de alerta usa `--color-warning`.
+
 ### Forma e espaço
 
 - Raio: **6–8 px** em controles e painéis; pílulas totalmente arredondadas só em selos e no item ativo do menu (lado direito).
@@ -140,6 +142,8 @@ Flux é a base de comportamento (acessibilidade, teclado, modais). A aparência 
 | `ui.filter-bar` | 📋 Planejado |
 | `ui.data-table` | 📋 Planejado |
 | `ui.side-panel` | ✅ v0.2 |
+| `ui.address-fields` (grade de endereço com busca de CEP, usada pela empresa e pelos clientes) | ✅ v0.3 |
+| `ui.client-dot` (ponto de cor do cliente) e `ui.color-picker` (rádios nativos, anel no escolhido) | ✅ v0.3 |
 | `ui.status` (ícone + texto) | 📋 Planejado |
 | `ui.key-value` (lista de propriedades do detalhe) | 📋 Planejado |
 | `ui.empty-state` | 📋 Planejado |

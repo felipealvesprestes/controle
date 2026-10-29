@@ -5,7 +5,8 @@ namespace App\Application\Provider;
 use App\Domain\Access\AccessDenied;
 use App\Domain\Access\AuditTrail;
 use App\Domain\Access\Authorizer;
-use App\Domain\Address\BrazilianStates;
+use App\Domain\Address\Address;
+use App\Domain\Address\InvalidAddress;
 use App\Domain\Provider\CompanyDetails;
 use App\Domain\Provider\ProviderProfileRepository;
 use App\Domain\Provider\ProviderRuleViolation;
@@ -40,7 +41,7 @@ final class UpdateCompanyDetails
             throw new ProviderRuleViolation('legalName', 'Enter the legal name.');
         }
 
-        foreach (['legalName' => 255, 'tradeName' => 255, 'street' => 255, 'complement' => 100, 'district' => 100, 'city' => 100, 'number' => 20, 'municipalRegistration' => 30] as $field => $limit) {
+        foreach (['legalName' => 255, 'tradeName' => 255, 'municipalRegistration' => 30] as $field => $limit) {
             if (mb_strlen($text[$field]) > $limit) {
                 throw new ProviderRuleViolation($field, 'Too long for this field.');
             }
@@ -60,16 +61,18 @@ final class UpdateCompanyDetails
             throw new ProviderRuleViolation('municipalRegistration', 'Use only letters, digits, dots, slashes and hyphens.');
         }
 
-        $state = strtoupper($text['state']);
-
-        if ($state !== '' && ! in_array($state, BrazilianStates::CODES, true)) {
-            throw new ProviderRuleViolation('state', 'Choose a state.');
-        }
-
-        $zipCode = (string) preg_replace('/\D/', '', $text['zipCode']);
-
-        if ($text['zipCode'] !== '' && strlen($zipCode) !== 8) {
-            throw new ProviderRuleViolation('zipCode', 'Enter the 8 digits of the CEP.');
+        try {
+            $address = Address::fromInput([
+                'street' => $text['street'],
+                'number' => $text['number'],
+                'complement' => $text['complement'],
+                'district' => $text['district'],
+                'city' => $text['city'],
+                'state' => $text['state'],
+                'zipCode' => $text['zipCode'],
+            ]);
+        } catch (InvalidAddress $invalid) {
+            throw new ProviderRuleViolation($invalid->field, $invalid->getMessage());
         }
 
         $details = new CompanyDetails(
@@ -78,13 +81,13 @@ final class UpdateCompanyDetails
             cnpj: $cnpj,
             municipalRegistration: $text['municipalRegistration'],
             taxRegime: TaxRegime::SimplesMeEpp,
-            street: $text['street'],
-            number: $text['number'],
-            complement: $text['complement'],
-            district: $text['district'],
-            city: $text['city'],
-            state: $state,
-            zipCode: $zipCode,
+            street: $address->street,
+            number: $address->number,
+            complement: $address->complement,
+            district: $address->district,
+            city: $address->city,
+            state: $address->state,
+            zipCode: $address->zipCode,
         );
 
         DB::transaction(function () use ($actorId, $details): void {

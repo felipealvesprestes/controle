@@ -19,4 +19,13 @@ return [
         'billing_defaults' => ['updated' => 'Padrões de cobrança alterados'],
         'company_details' => ['updated' => 'Dados da empresa alterados'],
     ],
+    'client' => [
+        'created' => 'Cliente criado',
+        'updated' => 'Cliente alterado',
+        'rate_scheduled' => 'Reajuste de taxa programado',
+        'rate_removed' => 'Taxa removida',
+        'deactivated' => 'Cliente inativado',
+        'reactivated' => 'Cliente reativado',
+        'deleted' => 'Cliente excluído',
+    ],
 ];

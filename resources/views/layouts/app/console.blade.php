@@ -98,6 +98,13 @@
                         <div class="my-3 border-t border-line"></div>
                     @endcan
 
+                    @can('client.menu')
+                        <p class="px-6 pt-2 pb-1.5 text-sm font-medium text-ink">{{ __('Records') }}</p>
+                        <x-ui.nav-item :href="route('clients.index')" icon="briefcase">{{ __('Clients') }}</x-ui.nav-item>
+
+                        <div class="my-3 border-t border-line"></div>
+                    @endcan
+
                     @can('access.manage')
                         <p class="px-6 pt-2 pb-1.5 text-sm font-medium text-ink">{{ __('Administration') }}</p>
                         <x-ui.nav-item :href="route('admin.users.index')" icon="users">{{ __('Users') }}</x-ui.nav-item>

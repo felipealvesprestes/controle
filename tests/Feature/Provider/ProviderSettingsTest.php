@@ -1,6 +1,5 @@
 <?php
 
-use App\Application\Access\SaveRole;
 use App\Application\Provider\UpdateBillingDefaults;
 use App\Application\Provider\UpdateCompanyDetails;
 use App\Domain\Access\AccessDenied;
@@ -13,20 +12,6 @@ use App\Models\ProviderProfile;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use Livewire\Livewire;
-
-/**
- * A user whose role grants exactly the given permissions (dependencies included).
- *
- * @param  list<string>  $permissions
- */
-function userWithPermissions(array $permissions): User
-{
-    $admin = User::factory()->admin()->create();
-    $user = User::factory()->create();
-    $user->roles()->attach(app(SaveRole::class)->handle($admin->id, null, 'Role '.$user->id, '', $permissions));
-
-    return $user;
-}
 
 /**
  * @return array{legalName: string, tradeName: string, cnpj: string, municipalRegistration: string, street: string, number: string, complement: string, district: string, city: string, state: string, zipCode: string}

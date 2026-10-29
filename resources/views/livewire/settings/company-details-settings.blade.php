@@ -31,38 +31,8 @@
         <section class="rounded-lg border border-line bg-surface p-6" aria-labelledby="address-title">
             <h2 id="address-title" class="text-base font-medium text-ink">{{ __('Address') }}</h2>
 
-            {{-- The CEP sits alone on its row: it fills the rows below, and its spinner stays inside the field. --}}
-            <div class="mt-6 grid gap-x-5 gap-y-6 sm:grid-cols-6">
-                <div class="sm:col-span-2">
-                    <flux:input wire:model.live.debounce.500ms="zipCode" :label="__('CEP')" inputmode="numeric" autocomplete="postal-code" :disabled="$readOnly" class="font-mono" placeholder="00000-000" data-test="zip-code-input" />
-                </div>
-                <p class="self-end pb-2.5 text-sm text-muted sm:col-span-4">{{ __('Fills street, district, city and state.') }}</p>
-
-                <div class="sm:col-span-4">
-                    <flux:input wire:model="street" :label="__('Street')" autocomplete="address-line1" :disabled="$readOnly" />
-                </div>
-                <div class="sm:col-span-2">
-                    <flux:input wire:model="number" id="company-number" :label="__('Number')" autocomplete="off" :disabled="$readOnly" />
-                </div>
-
-                <div class="sm:col-span-3">
-                    <flux:input wire:model="complement" :label="__('Complement')" autocomplete="address-line2" :disabled="$readOnly" />
-                </div>
-                <div class="sm:col-span-3">
-                    <flux:input wire:model="district" :label="__('District')" autocomplete="off" :disabled="$readOnly" />
-                </div>
-
-                <div class="sm:col-span-4">
-                    <flux:input wire:model="city" :label="__('City')" autocomplete="address-level2" :disabled="$readOnly" />
-                </div>
-                <div class="sm:col-span-2">
-                    <flux:select wire:model="state" :label="__('State')" :disabled="$readOnly">
-                        <flux:select.option value="">—</flux:select.option>
-                        @foreach ($states as $state)
-                            <flux:select.option :value="$state">{{ $state }}</flux:select.option>
-                        @endforeach
-                    </flux:select>
-                </div>
+            <div class="mt-6">
+                <x-ui.address-fields :read-only="$readOnly" number-id="company-number" />
             </div>
         </section>
 

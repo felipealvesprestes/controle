@@ -9,6 +9,7 @@ use App\Domain\Access\InvitationSender;
 use App\Domain\Access\PermissionCatalog;
 use App\Domain\Access\PermissionProvider;
 use App\Domain\Access\SessionTerminator;
+use App\Domain\Client\ClientPermissions;
 use App\Domain\Dashboard\DashboardPermissions;
 use App\Domain\Provider\ProviderPermissions;
 use App\Infrastructure\Access\CachedAuthorizer;
@@ -35,6 +36,7 @@ class AccessServiceProvider extends ServiceProvider
     public const array PERMISSION_PROVIDERS = [
         DashboardPermissions::class,
         ProviderPermissions::class,
+        ClientPermissions::class,
     ];
 
     /**

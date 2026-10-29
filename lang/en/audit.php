@@ -19,4 +19,13 @@ return [
         'billing_defaults' => ['updated' => 'Billing defaults updated'],
         'company_details' => ['updated' => 'Company details updated'],
     ],
+    'client' => [
+        'created' => 'Client created',
+        'updated' => 'Client updated',
+        'rate_scheduled' => 'Rate scheduled',
+        'rate_removed' => 'Rate removed',
+        'deactivated' => 'Client deactivated',
+        'reactivated' => 'Client reactivated',
+        'deleted' => 'Client deleted',
+    ],
 ];

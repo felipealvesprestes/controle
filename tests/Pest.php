@@ -1,5 +1,7 @@
 <?php
 
+use App\Application\Access\SaveRole;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -44,7 +46,16 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+/**
+ * A user whose role grants exactly the given permissions (dependencies included).
+ *
+ * @param  list<string>  $permissions
+ */
+function userWithPermissions(array $permissions): User
 {
-    // ..
+    $admin = User::factory()->admin()->create();
+    $user = User::factory()->create();
+    $user->roles()->attach(app(SaveRole::class)->handle($admin->id, null, 'Role '.$user->id, '', $permissions));
+
+    return $user;
 }

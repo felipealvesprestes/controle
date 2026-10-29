@@ -49,10 +49,21 @@
     --color-positive-soft: #dcfae5;
     --color-negative: #b3261e;
     --color-negative-soft: #ffedea;
+    --color-warning: #a35f00;
 
     --color-accent: var(--color-brand);
     --color-accent-content: var(--color-brand);
     --color-accent-foreground: var(--color-white);
+
+    /* Client colours (F-03): data markers only, never surfaces or buttons. */
+    --color-client-petrol: #0f6b74;
+    --color-client-green: #2f7d4f;
+    --color-client-amber: #a35f00;
+    --color-client-red: #b3261e;
+    --color-client-violet: #6b4fa8;
+    --color-client-blue: #2c5fa8;
+    --color-client-pink: #a8436f;
+    --color-client-slate: #5d6870;
 }
 
 @layer theme {
@@ -71,10 +82,20 @@
         --color-positive-soft: #172a1d;
         --color-negative: #e5566f;
         --color-negative-soft: #2c1a20;
+        --color-warning: #e0a03c;
 
         --color-accent: var(--color-brand);
         --color-accent-content: var(--color-brand);
         --color-accent-foreground: #0b1d1f;
+
+        --color-client-petrol: #4fb3bb;
+        --color-client-green: #57c088;
+        --color-client-amber: #e0a03c;
+        --color-client-red: #e5566f;
+        --color-client-violet: #a58ae0;
+        --color-client-blue: #6f9de6;
+        --color-client-pink: #e07fa8;
+        --color-client-slate: #a3acb3;
     }
 }
 

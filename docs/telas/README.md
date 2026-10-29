@@ -13,7 +13,7 @@ As telas T-01 a T-11 trazem o wireframe da versão de celular (390 px), onde o u
 | [T-05](T-05-faturamento.md) | Faturamento | `/billing` | F-08 | 📋 Planejado |
 | [T-06](T-06-periodo.md) | Período | `/billing/{id}` | F-08, F-09, F-12 | 📋 Planejado |
 | [T-07](T-07-painel.md) | Painel | `/dashboard` | F-10, F-14 | 📋 Planejado |
-| [T-08](T-08-clientes.md) | Clientes | `/clients` | F-03 | 📋 Planejado |
+| [T-08](T-08-clientes.md) | Clientes | `/clients` | F-03 | ✅ Implementada (v0.3) |
 | [T-09](T-09-categorias.md) | Categorias | `/categories` | F-04 | 📋 Planejado |
 | [T-10](T-10-configuracoes.md) | Configurações | `/settings` | F-01, F-02, F-07, F-12, F-14 | 🚧 Em andamento |
 | [T-11](T-11-relatorio-publico.md) | Relatório público | `/r/{token}` | F-13 | 💡 Ideia |
