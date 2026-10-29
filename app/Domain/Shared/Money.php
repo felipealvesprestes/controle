@@ -16,6 +16,21 @@ final readonly class Money
         return new self($cents);
     }
 
+    /**
+     * Reads an amount typed the Brazilian way: "60", "60,5", "1.234,56" or "R$ 60,00".
+     */
+    public static function parse(string $input): self
+    {
+        if (preg_match('/^(?:R\$\s*)?(\d{1,3}(?:\.\d{3}){0,2}|\d{1,9})(?:,(\d{1,2}))?$/', trim($input), $matches) !== 1) {
+            throw new InvalidArgumentException('Invalid amount.');
+        }
+
+        $reais = (int) str_replace('.', '', $matches[1]);
+        $cents = (int) str_pad($matches[2] ?? '0', 2, '0');
+
+        return new self($reais * 100 + $cents);
+    }
+
     public static function zero(): self
     {
         return new self(0);
@@ -37,6 +52,22 @@ final readonly class Money
     public function plus(self $other): self
     {
         return new self($this->cents + $other->cents);
+    }
+
+    /**
+     * R$ 1.335,00
+     */
+    public function formatted(): string
+    {
+        return 'R$ '.$this->decimal();
+    }
+
+    /**
+     * 1.335,00, the way the amount is typed back into a form.
+     */
+    public function decimal(): string
+    {
+        return number_format(intdiv($this->cents, 100), 0, ',', '.').','.sprintf('%02d', $this->cents % 100);
     }
 
     public function equals(self $other): bool

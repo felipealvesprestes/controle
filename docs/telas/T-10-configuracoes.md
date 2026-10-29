@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | 📋 Planejado |
+| **Status** | 🚧 Em andamento (Padrões de cobrança e Dados da empresa na v0.3) |
 | **Rota** | `/settings/*` |
 | **Funcionalidades** | F-01, F-02, F-07, F-12, F-14 |
 | **Acesso** | Mais → Configurações |
@@ -44,8 +44,8 @@ Agrupar tudo que se configura raramente. Cada item abre uma subpágina.
 
 | Item | Funcionalidade | Observação |
 |---|---|---|
-| Taxa padrão, Arredondamento | F-02 | Exemplo ao vivo do arredondamento |
-| Dados da empresa, Nota fiscal | F-02, F-12 | Códigos de serviço confirmados com o contador |
+| Taxa padrão, Arredondamento | F-02 | `/settings/billing` (Padrões de cobrança). Exemplo ao vivo do arredondamento |
+| Dados da empresa, Nota fiscal | F-02, F-12 | `/settings/company` (Dados da empresa) na v0.3; Códigos de serviço confirmados com o contador |
 | Certificado A1 | F-12 | Envio, validade, teste em homologação |
 | Pró-labore e folha | F-14 | Tabela mês a mês |
 | Importar planilha | F-07 | Envio, prévia, confirmação |

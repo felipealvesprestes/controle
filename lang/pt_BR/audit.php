@@ -15,4 +15,8 @@ return [
         'updated' => 'Perfil alterado',
         'deleted' => 'Perfil excluído',
     ],
+    'provider' => [
+        'billing_defaults' => ['updated' => 'Padrões de cobrança alterados'],
+        'company_details' => ['updated' => 'Dados da empresa alterados'],
+    ],
 ];

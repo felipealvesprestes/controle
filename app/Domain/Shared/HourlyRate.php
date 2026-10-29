@@ -9,12 +9,19 @@ use InvalidArgumentException;
  */
 final readonly class HourlyRate
 {
+    /** R$ 100.000,00 per hour: anything above is a typing mistake and would not fit the rate columns. */
+    public const int MAX_CENTS = 10_000_000;
+
     private function __construct(public Money $perHour) {}
 
     public static function of(Money $perHour): self
     {
         if ($perHour->cents <= 0) {
             throw new InvalidArgumentException("Hourly rate must be positive, got {$perHour->cents} cents.");
+        }
+
+        if ($perHour->cents > self::MAX_CENTS) {
+            throw new InvalidArgumentException('Hourly rate cannot exceed '.self::MAX_CENTS." cents, got {$perHour->cents}.");
         }
 
         return new self($perHour);

@@ -106,6 +106,18 @@
                         <div class="my-3 border-t border-line"></div>
                     @endcan
 
+                    @canany(['settings.billing.menu', 'settings.company.menu'])
+                        <p class="px-6 pt-2 pb-1.5 text-sm font-medium text-ink">{{ __('Settings') }}</p>
+                        @can('settings.billing.menu')
+                            <x-ui.nav-item :href="route('settings.billing.edit')" icon="banknotes">{{ __('Billing defaults') }}</x-ui.nav-item>
+                        @endcan
+                        @can('settings.company.menu')
+                            <x-ui.nav-item :href="route('settings.company.edit')" icon="building-office">{{ __('Company details') }}</x-ui.nav-item>
+                        @endcan
+
+                        <div class="my-3 border-t border-line"></div>
+                    @endcanany
+
                     <p class="px-6 pt-2 pb-1.5 text-sm font-medium text-ink">{{ __('Account') }}</p>
                     <x-ui.nav-item :href="route('profile.edit')" icon="user-circle">{{ __('Profile') }}</x-ui.nav-item>
                     <x-ui.nav-item :href="route('security.edit')" icon="shield-check">{{ __('Security') }}</x-ui.nav-item>

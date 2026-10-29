@@ -6,6 +6,17 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 
 ## [Não publicado]
 
+### Adicionado
+
+- Padrões de cobrança (F-02): taxa horária padrão e política de arredondamento, com exemplo ao vivo do valor de 1h07.
+- Dados da empresa (F-02): razão social, nome fantasia, CNPJ (numérico ou alfanumérico), inscrição municipal e endereço.
+- Grupo Configurações no menu, com permissões próprias para ver a taxa e para alterar cada tela.
+- O passo "Dados da empresa" do Painel passa a valer e leva à tela.
+
+### Segurança
+
+- Taxa horária limitada a R$ 100.000,00; valores maiores davam erro 500 em vez de erro de validação (A-11).
+
 ## [0.2.0] — 2026-10-29 · Acesso
 
 ### Adicionado

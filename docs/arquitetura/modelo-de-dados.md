@@ -62,14 +62,15 @@ Tabela do starter kit, com colunas adicionais:
 |---|---|---|
 | id | int | |
 | legal_name, trade_name | string | Razão social e nome fantasia |
-| cnpj | string(14) | Só dígitos |
-| municipal_registration | string | Inscrição municipal (Canoas) |
+| cnpj | char(14), nulo | Sem pontuação, letras maiúsculas (CNPJ alfanumérico) |
+| municipal_registration | string(30) | Inscrição municipal (Canoas) |
 | tax_regime | enum | `simples_me_epp` |
-| default_rate_cents | int | Taxa padrão por hora |
+| default_rate_cents | int | Taxa padrão por hora, até 10.000.000 (R$ 100.000,00) |
 | default_rounding_policy | enum | `per_period` · `per_entry` · `exact` |
 | service_code_national, nbs_code, cnae | string | Códigos da NFS-e ([fiscal/nfse.md](../fiscal/nfse.md)) |
 | service_description_template | text | Texto base da descrição da nota |
-| address_* | string | Endereço do prestador |
+| address_street, address_number, address_complement, address_district, address_city | string | Endereço do prestador |
+| address_state, address_zip_code | char(2), char(8) | UF e CEP só com dígitos |
 
 ### clients — [F-03](../funcionalidades/F-03-clientes-e-taxas.md)
 

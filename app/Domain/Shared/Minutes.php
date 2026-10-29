@@ -36,6 +36,14 @@ final readonly class Minutes
     }
 
     /**
+     * 22h04
+     */
+    public function formatted(): string
+    {
+        return sprintf('%dh%02d', intdiv($this->value, 60), $this->value % 60);
+    }
+
+    /**
      * Rounds up to the next whole point (RN-01).
      */
     public function roundedUpToPoint(): self

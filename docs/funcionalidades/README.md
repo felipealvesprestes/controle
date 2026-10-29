@@ -5,7 +5,7 @@ Uma página por funcionalidade, criada a partir de [_templates/funcionalidade.md
 | ID | Funcionalidade | Versão | Status | Telas |
 |---|---|---|---|---|
 | [F-01](F-01-acesso-e-seguranca.md) | Acesso e segurança | v0.1 / v0.2 / v1.0 | 🚧 Em andamento | T-01, T-10, T-12 |
-| [F-02](F-02-configuracoes-do-prestador.md) | Configurações do prestador | v0.3 | 📋 Planejado | T-10 |
+| [F-02](F-02-configuracoes-do-prestador.md) | Configurações do prestador | v0.3 / v1.1 / v1.2 | ✅ Implementada (v0.3) | T-10 |
 | [F-03](F-03-clientes-e-taxas.md) | Clientes e taxas | v0.3 | 📋 Planejado | T-08 |
 | [F-04](F-04-categorias.md) | Categorias | v0.3 | 📋 Planejado | T-09 |
 | [F-05](F-05-lancamentos-de-horas.md) | Lançamentos de horas | v0.4 | 📋 Planejado | T-02, T-03, T-04 |

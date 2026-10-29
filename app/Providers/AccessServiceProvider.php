@@ -10,6 +10,7 @@ use App\Domain\Access\PermissionCatalog;
 use App\Domain\Access\PermissionProvider;
 use App\Domain\Access\SessionTerminator;
 use App\Domain\Dashboard\DashboardPermissions;
+use App\Domain\Provider\ProviderPermissions;
 use App\Infrastructure\Access\CachedAuthorizer;
 use App\Infrastructure\Access\DatabaseAuditTrail;
 use App\Infrastructure\Access\DatabaseSessionTerminator;
@@ -33,6 +34,7 @@ class AccessServiceProvider extends ServiceProvider
      */
     public const array PERMISSION_PROVIDERS = [
         DashboardPermissions::class,
+        ProviderPermissions::class,
     ];
 
     /**

@@ -29,3 +29,8 @@ it('rounds up to the next whole point — RN-01', function (int $minutes, int $r
     'just over a point' => [16, 30],
     'october 2026 from the spreadsheet' => [1324, 1335],
 ]);
+
+it('formats minutes as hours and minutes', function () {
+    expect(Minutes::of(1324)->formatted())->toBe('22h04')
+        ->and(Minutes::zero()->formatted())->toBe('0h00');
+});

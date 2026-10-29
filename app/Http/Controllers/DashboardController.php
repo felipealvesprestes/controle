@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Domain\Billing\BillableEntry;
 use App\Domain\Billing\BillingCalculator;
 use App\Domain\Billing\Rounding\RoundUpPerPeriod;
+use App\Domain\Provider\ProviderProfileRepository;
 use App\Domain\Shared\HourlyRate;
 use App\Domain\Shared\Minutes;
 use App\Domain\Shared\Money;
@@ -21,7 +22,7 @@ final class DashboardController extends Controller
     /** Hourly rate charged in the spreadsheet, in cents. */
     private const int SPREADSHEET_RATE_CENTS = 6000;
 
-    public function __invoke(Request $request, BillingCalculator $calculator): View
+    public function __invoke(Request $request, BillingCalculator $calculator, ProviderProfileRepository $profiles): View
     {
         /** @var User $user */
         $user = $request->user();
@@ -29,7 +30,7 @@ final class DashboardController extends Controller
         $steps = [
             ['title' => __('Administrator account'), 'description' => __('You will manage users and permissions.'), 'done' => $user->is_admin, 'action' => null, 'version' => null],
             ['title' => __('Two-factor authentication'), 'description' => __('Protects the account that will hold the company certificate.'), 'done' => $user->two_factor_confirmed_at !== null, 'action' => route('security.edit'), 'version' => null],
-            ['title' => __('Company details'), 'description' => __('CNPJ, municipal registration and default hourly rate.'), 'done' => false, 'action' => null, 'version' => 'v0.3'],
+            ['title' => __('Company details'), 'description' => __('Legal name, CNPJ and address for the report and the invoice.'), 'done' => $profiles->companyDetails()->isComplete(), 'action' => $user->can('settings.company.page') ? route('settings.company.edit') : null, 'version' => null],
             ['title' => __('First client and rate'), 'description' => __('Who is billed, and at what rate.'), 'done' => false, 'action' => null, 'version' => 'v0.3'],
             ['title' => __('First time entry'), 'description' => __('Timer or manual entry, from the phone or the computer.'), 'done' => false, 'action' => null, 'version' => 'v0.4'],
         ];
@@ -42,24 +43,14 @@ final class DashboardController extends Controller
             'steps' => $steps,
             'stepsDone' => count(array_filter($steps, fn (array $step): bool => $step['done'])),
             'example' => [
-                'worked' => $this->duration($worked),
+                'worked' => $worked->formatted(),
                 'points' => $totals->points()?->value,
-                'billed' => $this->duration($totals->billedMinutes),
-                'rate' => $this->money($rate->perHour),
-                'pointValue' => $this->money($rate->pointValue()),
-                'amount' => $this->money($totals->amount),
+                'billed' => $totals->billedMinutes->formatted(),
+                'rate' => $rate->perHour->formatted(),
+                'pointValue' => $rate->pointValue()->formatted(),
+                'amount' => $totals->amount->formatted(),
             ],
             'minutesPerPoint' => Points::MINUTES_PER_POINT,
         ]);
-    }
-
-    private function duration(Minutes $minutes): string
-    {
-        return sprintf('%dh%02d', intdiv($minutes->value, 60), $minutes->value % 60);
-    }
-
-    private function money(Money $money): string
-    {
-        return 'R$ '.number_format(intdiv($money->cents, 100), 0, ',', '.').','.sprintf('%02d', $money->cents % 100);
     }
 }

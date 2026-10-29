@@ -26,3 +26,22 @@ it('rounds cent-minutes half up to the cent exactly once — RN-07', function (i
 it('rejects negative cent-minutes', function () {
     Money::fromCentMinutes(-1);
 })->throws(InvalidArgumentException::class, 'Cent-minutes cannot be negative, got -1.');
+
+it('reads amounts typed the Brazilian way', function (string $input, int $cents) {
+    expect(Money::parse($input)->cents)->toBe($cents);
+})->with([
+    'whole reais' => ['60', 6000],
+    'one decimal' => ['60,5', 6050],
+    'two decimals' => ['60,50', 6050],
+    'thousands separator' => ['1.234,56', 123456],
+    'currency prefix and spaces' => [' R$ 75,00 ', 7500],
+]);
+
+it('refuses amounts that are not typed the Brazilian way', function (string $input) {
+    Money::parse($input);
+})->throws(InvalidArgumentException::class, 'Invalid amount.')->with(['', 'abc', '60.50', '60,555', '-10', '1.23,00', '1234567890']);
+
+it('formats amounts in reais', function () {
+    expect(Money::fromCents(133500)->formatted())->toBe('R$ 1.335,00')
+        ->and(Money::fromCents(1507)->decimal())->toBe('15,07');
+});

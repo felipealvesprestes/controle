@@ -15,4 +15,8 @@ return [
         'updated' => 'Role updated',
         'deleted' => 'Role deleted',
     ],
+    'provider' => [
+        'billing_defaults' => ['updated' => 'Billing defaults updated'],
+        'company_details' => ['updated' => 'Company details updated'],
+    ],
 ];

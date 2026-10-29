@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Domain\Provider\ProviderProfileRepository;
 use App\Http\Middleware\RequireRecentPasswordConfirmation;
+use App\Infrastructure\Provider\EloquentProviderProfileRepository;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(ProviderProfileRepository::class, EloquentProviderProfileRepository::class);
     }
 
     /**
