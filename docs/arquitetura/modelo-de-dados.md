@@ -120,7 +120,9 @@ Tabela do starter kit, com colunas adicionais:
 | rate_cents | int | Taxa vigente no início (RN-04) |
 | source | enum | `manual` · `timer` · `import` |
 
-Índices: `(user_id, started_at)`, `(client_id, started_at)`. Unicidade parcial: no máximo uma linha com `ended_at` nulo por usuário.
+| running_user_id | int, nulo, gerada | `user_id` enquanto `ended_at` é nulo; índice único garante um cronômetro por usuário (o MySQL não tem índice parcial) |
+
+Índices: `(user_id, started_at)`, `(client_id, started_at)`, `running_user_id` único. Chaves estrangeiras com `restrictOnDelete`: cliente, categoria e usuário com lançamentos não são apagados.
 
 ### billing_periods — [F-08](../funcionalidades/F-08-periodos-de-faturamento.md)
 
@@ -129,6 +131,11 @@ Tabela do starter kit, com colunas adicionais:
 | client_id | fk | |
 | month | date | Primeiro dia do mês; único por cliente |
 | status | enum | `open` · `closed` · `invoiced` · `paid` (RN-09) |
+
+Na v0.4 a tabela tem só as colunas acima; as do snapshot abaixo chegam com o F-08.
+
+| Coluna | Tipo | Observação |
+|---|---|---|
 | billable_minutes | int, nulo | Snapshot (RN-11) |
 | rounding_minutes | int, nulo | Minutos adicionados pelo arredondamento |
 | points | int, nulo | |

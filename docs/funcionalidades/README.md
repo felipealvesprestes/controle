@@ -8,8 +8,8 @@ Uma página por funcionalidade, criada a partir de [_templates/funcionalidade.md
 | [F-02](F-02-configuracoes-do-prestador.md) | Configurações do prestador | v0.3 / v1.1 / v1.2 | ✅ Implementada (v0.3) | T-10 |
 | [F-03](F-03-clientes-e-taxas.md) | Clientes e taxas | v0.3 | ✅ Implementada (v0.3) | T-08 |
 | [F-04](F-04-categorias.md) | Categorias | v0.3 | ✅ Implementada (v0.3) | T-09 |
-| [F-05](F-05-lancamentos-de-horas.md) | Lançamentos de horas | v0.4 | 📋 Planejado | T-02, T-03, T-04 |
-| [F-06](F-06-cronometro.md) | Cronômetro | v0.4 | 📋 Planejado | T-02 |
+| [F-05](F-05-lancamentos-de-horas.md) | Lançamentos de horas | v0.4 | ✅ Entregue (v0.4) | T-02, T-03, T-04 |
+| [F-06](F-06-cronometro.md) | Cronômetro | v0.4 | ✅ Entregue (v0.4) | T-02 |
 | [F-07](F-07-importacao-da-planilha.md) | Importação da planilha | v0.5 | 📋 Planejado | T-10 |
 | [F-08](F-08-periodos-de-faturamento.md) | Períodos de faturamento | v0.5 | 📋 Planejado | T-05, T-06 |
 | [F-09](F-09-relatorio-do-periodo.md) | Relatório do período | v0.5 | 📋 Planejado | T-06 |

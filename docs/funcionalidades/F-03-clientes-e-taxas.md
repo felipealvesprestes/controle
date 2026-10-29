@@ -60,4 +60,4 @@ Permissões do catálogo usadas por esta funcionalidade: `client.menu`, `client.
 
 Casos de uso em `app/Application/Client`: `CreateClient`, `UpdateClient`, `ScheduleRate`, `RemoveRate`, `ChangeClientStatus` (inativar e reativar) e `DeleteClient`. `RateSchedule` (domínio) resolve a taxa para uma data. O documento é o value object `TaxId`, que envolve `Cpf` ou `Cnpj` (`app/Domain/Shared`). O endereço é o value object `Address` (`app/Domain/Address`), reaproveitado pelos dados da empresa do F-02, assim como o componente `ui.address-fields` e a busca de CEP (`FillsAddressFromZipCode`).
 
-Ainda não há lançamentos, então excluir é sempre possível. O F-05 deve fazer `DeleteClient` recusar cliente com lançamentos, sugerindo inativar (RN-13), e a T-08 passa a mostrar "Excluir" só para cliente sem lançamentos.
+Desde a v0.4, `DeleteClient` recusa cliente com lançamentos e sugere inativar (RN-13); os períodos vazios do cliente são apagados junto. A T-08 continua mostrando "Excluir" e explica a recusa no erro.

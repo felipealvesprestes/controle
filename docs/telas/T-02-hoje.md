@@ -2,8 +2,8 @@
 
 | | |
 |---|---|
-| **Status** | 📋 Planejado |
-| **Rota** | `/` |
+| **Status** | ✅ Implementada (v0.4) |
+| **Rota** | `/today` (o `/` continua sendo a página pública; quem entra é levado a Hoje) |
 | **Funcionalidades** | F-05, F-06 |
 | **Acesso** | Barra inferior (tela inicial) |
 

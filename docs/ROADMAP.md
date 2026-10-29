@@ -56,10 +56,11 @@ Base técnica e visual sobre a qual todo o resto é construído.
 - [x] [F-04 Categorias](funcionalidades/F-04-categorias.md)
 - [x] Auditoria `quick` do diff da v0.3 (run-3: A-13 a A-15 corrigidos)
 
-### v0.4 — Lançamentos · 📋 Planejado
+### v0.4 — Lançamentos · 🚧 Em andamento
 
-- [ ] [F-05 Lançamentos de horas](funcionalidades/F-05-lancamentos-de-horas.md)
-- [ ] [F-06 Cronômetro](funcionalidades/F-06-cronometro.md)
+- [x] [F-05 Lançamentos de horas](funcionalidades/F-05-lancamentos-de-horas.md)
+- [x] [F-06 Cronômetro](funcionalidades/F-06-cronometro.md)
+- [ ] Auditoria `quick` do diff da v0.4
 
 ### v0.5 — Faturamento · 📋 Planejado
 

@@ -36,4 +36,16 @@ return [
         'reactivated' => 'Categoria reativada',
         'deleted' => 'Categoria excluída',
     ],
+    'time_entry' => [
+        'created' => 'Lançamento criado',
+        'updated' => 'Lançamento alterado',
+        'deleted' => 'Lançamento excluído',
+        'restored' => 'Lançamento restaurado',
+    ],
+    'timer' => [
+        'started' => 'Cronômetro iniciado',
+        'stopped' => 'Cronômetro parado',
+        'start_adjusted' => 'Início do cronômetro ajustado',
+        'discarded' => 'Cronômetro descartado',
+    ],
 ];

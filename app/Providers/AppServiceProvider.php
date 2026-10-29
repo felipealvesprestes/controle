@@ -3,14 +3,18 @@
 namespace App\Providers;
 
 use App\Domain\Address\AddressLookup;
+use App\Domain\Billing\BillingPeriodRepository;
 use App\Domain\Category\CategoryRepository;
 use App\Domain\Client\ClientRepository;
 use App\Domain\Provider\ProviderProfileRepository;
+use App\Domain\Time\TimeEntryRepository;
 use App\Http\Middleware\RequireRecentPasswordConfirmation;
 use App\Infrastructure\Address\ViaCepAddressLookup;
+use App\Infrastructure\Billing\EloquentBillingPeriodRepository;
 use App\Infrastructure\Category\EloquentCategoryRepository;
 use App\Infrastructure\Client\EloquentClientRepository;
 use App\Infrastructure\Provider\EloquentProviderProfileRepository;
+use App\Infrastructure\Time\EloquentTimeEntryRepository;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -30,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(AddressLookup::class, ViaCepAddressLookup::class);
         $this->app->bind(ClientRepository::class, EloquentClientRepository::class);
         $this->app->bind(CategoryRepository::class, EloquentCategoryRepository::class);
+        $this->app->bind(TimeEntryRepository::class, EloquentTimeEntryRepository::class);
+        $this->app->bind(BillingPeriodRepository::class, EloquentBillingPeriodRepository::class);
     }
 
     /**

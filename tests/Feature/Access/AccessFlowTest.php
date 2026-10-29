@@ -94,7 +94,8 @@ describe('active accounts only — RN-19', function () {
 
 describe('authorization — RN-18', function () {
     it('sends each user to the first screen they may open', function () {
-        $this->actingAs(User::factory()->admin()->create())->get(route('home.redirect'))->assertRedirect(route('dashboard'));
+        $this->actingAs(User::factory()->admin()->create())->get(route('home.redirect'))->assertRedirect(route('time.today'));
+        $this->actingAs(userWithPermissions(['dashboard.page']))->get(route('home.redirect'))->assertRedirect(route('dashboard'));
         $this->actingAs(User::factory()->create())->get(route('home.redirect'))->assertRedirect(route('profile.edit'));
     });
 

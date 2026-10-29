@@ -7,9 +7,9 @@ As telas T-01 a T-11 trazem o wireframe da versão de celular (390 px), onde o u
 | ID | Tela | Rota | Funcionalidades | Status |
 |---|---|---|---|---|
 | [T-01](T-01-login.md) | Login | `/login` | F-01 | 📋 Planejado |
-| [T-02](T-02-hoje.md) | Hoje | `/` | F-05, F-06 | 📋 Planejado |
-| [T-03](T-03-lancamentos.md) | Lançamentos | `/time-entries` | F-05 | 📋 Planejado |
-| [T-04](T-04-lancamento.md) | Lançamento (criar/editar) | `/time-entries/create`, `/time-entries/{id}` | F-05, F-16 | 📋 Planejado |
+| [T-02](T-02-hoje.md) | Hoje | `/today` | F-05, F-06 | ✅ Implementada (v0.4) |
+| [T-03](T-03-lancamentos.md) | Lançamentos | `/time-entries` | F-05 | ✅ Implementada (v0.4) |
+| [T-04](T-04-lancamento.md) | Lançamento (criar/editar) | painel lateral em T-02/T-03 | F-05, F-16 | ✅ Implementada (v0.4) |
 | [T-05](T-05-faturamento.md) | Faturamento | `/billing` | F-08 | 📋 Planejado |
 | [T-06](T-06-periodo.md) | Período | `/billing/{id}` | F-08, F-09, F-12 | 📋 Planejado |
 | [T-07](T-07-painel.md) | Painel | `/dashboard` | F-10, F-14 | 📋 Planejado |

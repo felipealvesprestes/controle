@@ -53,4 +53,12 @@ class Client extends Model
     {
         return $this->hasMany(ClientRate::class);
     }
+
+    /**
+     * @return HasMany<TimeEntry, $this>
+     */
+    public function timeEntries(): HasMany
+    {
+        return $this->hasMany(TimeEntry::class);
+    }
 }

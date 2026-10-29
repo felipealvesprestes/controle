@@ -6,6 +6,23 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 
 ## [Não publicado]
 
+### Adicionado
+
+- Tela Hoje (T-02): cronômetro com cliente e categoria, tempo contado a partir do início (não perde tempo com o celular bloqueado), parar com descrição e referência, ajustar início e descartar; lista e total do dia com valor parcial.
+- Barra do cronômetro em todas as telas enquanto ele estiver rodando, com atalho para parar.
+- Lançamento manual (T-04) no painel lateral: cliente, categoria, referência, descrição, data, início e fim, com duração, pontos e valor ao vivo; último cliente e categoria pré-preenchidos e início sugerido no fim do último lançamento do dia.
+- "Terminou no dia seguinte?" quando o fim é menor que o início; mais de 4 h pede confirmação e mais de 12 h é recusado (RN-02).
+- Sobreposição recusada com link para o lançamento conflitante; encostar é permitido (RN-03).
+- Taxa vigente gravada em cada lançamento e período do mês criado automaticamente (RN-04, RN-08); período fechado não aceita lançar, alterar nem excluir (RN-10).
+- Tela Lançamentos (T-03): mês, cliente, categoria e busca, agrupado por dia com totais; duplicar, excluir com desfazer por 5 s e cadeado nos períodos fechados.
+- Autocompletar referência e descrição a partir dos lançamentos anteriores do cliente.
+- Permissões novas: ver, lançar, alterar, excluir, ver valores e ver os lançamentos de todos os usuários.
+
+### Alterado
+
+- Ao entrar, quem pode lançar horas vai direto para Hoje.
+- Cliente ou categoria com lançamentos não pode mais ser excluído, só inativado (RN-13).
+
 ## [0.3.0] — 2026-10-29 · Cadastros
 
 ### Adicionado

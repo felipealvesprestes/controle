@@ -12,8 +12,12 @@ final class HomeController extends Controller
 {
     public function __invoke(Request $request): RedirectResponse
     {
-        return $request->user()?->can('dashboard.page')
-            ? redirect()->route('dashboard')
-            : redirect()->route('profile.edit');
+        $user = $request->user();
+
+        return match (true) {
+            (bool) $user?->can('time.entry.view') => redirect()->route('time.today'),
+            (bool) $user?->can('dashboard.page') => redirect()->route('dashboard'),
+            default => redirect()->route('profile.edit'),
+        };
     }
 }

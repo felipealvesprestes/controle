@@ -8,7 +8,7 @@ Cada controle tem um ID `SEC-xx` estável, a versão em que deve estar pronto e 
 |---|---|---|---|---|
 | SEC-01 | Negado por padrão: sem permissão explícita, nada é acessível (RN-15) | Teste: usuário sem perfil recebe 403 em todas as rotas autenticadas | v0.2 | ✅ |
 | SEC-02 | Toda ação que altera dados checa permissão no caso de uso via `Authorizer`, não só na tela (RN-18) | Teste de arquitetura: casos de uso de escrita recebem `Actor`; teste de 403 por chamada direta ao Livewire | v0.2 | ✅ |
-| SEC-03 | Escopo de dados: usuário sem `*.scope.all` só lê e altera os próprios registros (sem IDOR) | Teste: trocar o ID na requisição retorna 404 | v0.4 | 📋 |
+| SEC-03 | Escopo de dados: usuário sem `*.scope.all` só lê e altera os próprios registros (sem IDOR) | Teste: trocar o ID na requisição responde "não existe mais" (`TimeEntryScopeTest`) | v0.4 | ✅ |
 | SEC-04 | IDs e campos sensíveis de componentes Livewire com `#[Locked]`; nada de confiar em propriedade pública vinda do navegador | Teste: alterar propriedade travada falha | v0.2 | ✅ |
 | SEC-05 | Atribuição em massa bloqueada: `Model::shouldBeStrict()`, `$fillable` explícito, dados entram só por DTO do caso de uso | PHPStan + teste | v0.1 | 📋 |
 | SEC-06 | Arquivos privados (XML, PDF, certificado) fora de `public/`, servidos só por rota autorizada | Teste: acesso sem permissão retorna 403 | v1.1 | 📋 |

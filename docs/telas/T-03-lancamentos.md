@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | 📋 Planejado |
+| **Status** | ✅ Implementada (v0.4) |
 | **Rota** | `/time-entries` |
 | **Funcionalidades** | F-05 |
 | **Acesso** | Barra inferior |
@@ -46,7 +46,8 @@ Consultar, filtrar e corrigir lançamentos de qualquer dia.
 ## Estados
 
 - **Vazio com filtro:** "Nada encontrado" + limpar filtros.
-- **Carregando:** rolagem infinita por dia.
+- **Carregando:** o filtro de mês limita a lista; rolagem infinita fica para quando o volume pedir.
+- Os filtros ficam guardados na sessão.
 
 ## Desktop
 

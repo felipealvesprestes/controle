@@ -91,12 +91,18 @@
                 </div>
 
                 <nav class="flex-1 overflow-y-auto py-3 pr-3">
-                    @can('dashboard.menu')
+                    @canany(['time.entry.menu', 'dashboard.menu'])
                         <p class="px-6 pt-2 pb-1.5 text-sm font-medium text-ink">{{ __('Work') }}</p>
-                        <x-ui.nav-item :href="route('dashboard')" icon="squares-2x2" exact>{{ __('Dashboard') }}</x-ui.nav-item>
+                        @can('time.entry.menu')
+                            <x-ui.nav-item :href="route('time.today')" icon="play-circle">{{ __('Today') }}</x-ui.nav-item>
+                            <x-ui.nav-item :href="route('time-entries.index')" icon="clock">{{ __('Time entries') }}</x-ui.nav-item>
+                        @endcan
+                        @can('dashboard.menu')
+                            <x-ui.nav-item :href="route('dashboard')" icon="squares-2x2" exact>{{ __('Dashboard') }}</x-ui.nav-item>
+                        @endcan
 
                         <div class="my-3 border-t border-line"></div>
-                    @endcan
+                    @endcanany
 
                     @canany(['client.menu', 'category.menu'])
                         <p class="px-6 pt-2 pb-1.5 text-sm font-medium text-ink">{{ __('Records') }}</p>
@@ -141,6 +147,9 @@
             @endpersist
 
             <main class="min-w-0 flex-1">
+                @unless (request()->routeIs('time.today'))
+                    <livewire:time.timer-bar />
+                @endunless
                 {{ $slot }}
             </main>
         </div>

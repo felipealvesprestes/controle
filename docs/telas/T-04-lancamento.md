@@ -2,8 +2,8 @@
 
 | | |
 |---|---|
-| **Status** | 📋 Planejado |
-| **Rota** | `/time-entries/create`, `/time-entries/{id}` (bottom sheet sobre a tela de origem) |
+| **Status** | ✅ Implementada (v0.4) |
+| **Rota** | Sem rota própria: painel lateral sobre T-02 e T-03 (folha inferior no celular chega com o F-11) |
 | **Funcionalidades** | F-05, F-16 |
 | **Acesso** | `(+)` em T-02/T-03, toque num lançamento |
 

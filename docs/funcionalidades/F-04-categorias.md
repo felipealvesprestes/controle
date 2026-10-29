@@ -18,7 +18,7 @@ Classificar o trabalho e decidir o que é cobrado.
 - Reordenar arrastando pela alça (`wire:sort` do Livewire) ou pelos botões subir e descer, que também servem ao teclado. A ordem é a da escolha no lançamento.
 - Nova categoria entra no fim da lista. Editar abre o painel lateral com nome, cor e faturável, mais Inativar e Excluir.
 - Inativas ficam numa lista à parte, com "Reativar"; a categoria reativada volta no fim da lista.
-- Ainda não há lançamentos, então excluir é sempre possível. O F-05 deve fazer `DeleteCategory` recusar categoria com lançamentos, sugerindo inativar (RN-13).
+- Categoria com lançamentos não pode ser excluída: `DeleteCategory` recusa e sugere inativar (RN-13, desde a v0.4).
 
 ## Critérios de aceite
 

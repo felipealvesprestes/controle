@@ -13,6 +13,7 @@ use App\Domain\Category\CategoryPermissions;
 use App\Domain\Client\ClientPermissions;
 use App\Domain\Dashboard\DashboardPermissions;
 use App\Domain\Provider\ProviderPermissions;
+use App\Domain\Time\TimePermissions;
 use App\Infrastructure\Access\CachedAuthorizer;
 use App\Infrastructure\Access\DatabaseAuditTrail;
 use App\Infrastructure\Access\DatabaseSessionTerminator;
@@ -36,6 +37,7 @@ class AccessServiceProvider extends ServiceProvider
      */
     public const array PERMISSION_PROVIDERS = [
         DashboardPermissions::class,
+        TimePermissions::class,
         ProviderPermissions::class,
         ClientPermissions::class,
         CategoryPermissions::class,
