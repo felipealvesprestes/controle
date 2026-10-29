@@ -136,7 +136,7 @@
                     <x-ui.nav-item :href="route('appearance.edit')" icon="swatch">{{ __('Appearance') }}</x-ui.nav-item>
                 </nav>
 
-                <p class="border-t border-line px-6 py-3 text-xs text-muted">{{ config('app.name') }} v0.1</p>
+                <p class="border-t border-line px-6 py-3 text-xs text-muted">{{ config('app.name') }} v{{ config('app.version') }}</p>
             </aside>
             @endpersist
 

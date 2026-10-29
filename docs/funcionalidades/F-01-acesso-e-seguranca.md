@@ -20,6 +20,8 @@ Só pessoas cadastradas pelo administrador acessam o sistema. Como ele guardará
 - Sessão longa no celular ("manter conectado").
 - Recuperação de senha por e-mail.
 - Usuário desativado não faz login e perde as sessões abertas (RN-19).
+- Sem exclusão da própria conta: quem sai é desativado pelo administrador, e o histórico continua dizendo quem fez cada mudança (RN-19, RN-20).
+- Trocar ou redefinir a senha também anula um desafio de 2FA aberto com a senha antiga (A-03, A-13).
 
 ## Critérios de aceite
 
@@ -27,6 +29,7 @@ Só pessoas cadastradas pelo administrador acessam o sistema. Como ele guardará
 - [x] Convite expirado ou já usado mostra mensagem clara e não cria sessão (broker `invites`, validade de 72 h).
 - [ ] Administrador sem 2FA é levado à configuração antes de usar o sistema (v1.0).
 - [x] Login com rate limit (5 tentativas/minuto por e-mail + IP).
+- [x] O Perfil não oferece "Excluir conta" e o banco recusa apagar quem tem registro na auditoria.
 
 ## Fora de escopo
 

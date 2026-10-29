@@ -36,3 +36,12 @@ test('dashboard setup counts only what is really done', function () {
     $this->actingAs($user)->get(route('dashboard'))
         ->assertViewHas('stepsDone', 2);
 });
+
+test('sidebar footer shows the configured version', function () {
+    config(['app.version' => '9.8.7']);
+
+    $this->actingAs(User::factory()->admin()->create())
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee('v9.8.7');
+});

@@ -41,7 +41,7 @@ Cadastrar quem recebe a cobrança, com taxa e política próprias e dados sufici
 | Ameaça | Controles (`SEC-xx`) | Teste |
 |---|---|---|
 | Usuário sem permissão cria, altera, reajusta, inativa ou exclui pela chamada direta ao Livewire | SEC-02, SEC-46 | `AccessDenied` (403) em cada caso de uso (`ClientsTest` › permissions) |
-| CPF/CNPJ, e-mail, endereço ou taxa vazarem pelo HTML ou pelo estado do Livewire | SEC-04, F-17 | Sem `client.fiscal.view`, as propriedades ficam vazias e a lista mostra `•••`; sem `client.rate.view`, a taxa não é renderizada |
+| CPF/CNPJ, razão social ou nome, e-mail, endereço ou taxa vazarem pelo HTML ou pelo estado do Livewire | SEC-04, F-17 | Sem `client.fiscal.view`, as propriedades ficam vazias e a lista mostra `•••` e omite a razão social (A-14, `AuditRunThreeTest`); sem `client.rate.view`, a taxa não é renderizada |
 | Remover a taxa de outro cliente trocando o id | SEC-02 (IDOR) | Remoção filtra por cliente; teste "does not remove a rate of another client" |
 | Campos extras ou adulterados (cor, política) gravados | SEC-05 | Repositório grava só os campos do objeto de domínio, depois de validados no caso de uso |
 | Dois cadastros com o mesmo nome ao mesmo tempo derrubam a tela com erro 500 | A10 | `tests/Feature/Security/ClientInputTest.php` (A-12) |

@@ -49,11 +49,12 @@ Base técnica e visual sobre a qual todo o resto é construído.
 - [x] Navegação sem recarregar a página: barra e menu persistem entre telas, sem baixar o CSS de novo
 - [x] Auditoria `quick` do diff da v0.1 + v0.2 (run-2: A-08 a A-10 corrigidos)
 
-### v0.3 — Cadastros · 🚧 Em andamento
+### v0.3 — Cadastros · ✅ Concluída
 
 - [x] [F-02 Configurações do prestador](funcionalidades/F-02-configuracoes-do-prestador.md)
 - [x] [F-03 Clientes e taxas](funcionalidades/F-03-clientes-e-taxas.md)
 - [x] [F-04 Categorias](funcionalidades/F-04-categorias.md)
+- [x] Auditoria `quick` do diff da v0.3 (run-3: A-13 a A-15 corrigidos)
 
 ### v0.4 — Lançamentos · 📋 Planejado
 

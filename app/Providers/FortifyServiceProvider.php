@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Actions\Fortify\ResetUserPassword;
+use App\Http\Requests\TwoFactorLoginRequest;
 use App\Http\Responses\UniformPasswordResetLinkResponse;
 use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -18,6 +19,7 @@ use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Laravel\Fortify\Contracts\FailedPasswordResetLinkRequestResponse;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Http\Requests\TwoFactorLoginRequest as FortifyTwoFactorLoginRequest;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,7 @@ class FortifyServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(FailedPasswordResetLinkRequestResponse::class, UniformPasswordResetLinkResponse::class);
+        $this->app->bind(FortifyTwoFactorLoginRequest::class, TwoFactorLoginRequest::class);
     }
 
     /**
@@ -77,7 +80,14 @@ class FortifyServiceProvider extends ServiceProvider
             $user = User::query()->where('email', $request->string(Fortify::username())->lower()->toString())->first();
             $valid = Hash::check($request->string('password')->toString(), $user->password ?? $this->dummyPasswordHash());
 
-            return $valid && $user !== null && $user->active ? $user : null;
+            if (! $valid || $user === null || ! $user->active) {
+                return null;
+            }
+
+            // A pending two-factor challenge stays valid only while this password does (A-03).
+            $request->session()->put(TwoFactorLoginRequest::SESSION_KEY, TwoFactorLoginRequest::passwordFingerprint($user));
+
+            return $user;
         });
     }
 

@@ -6,6 +6,8 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 
 ## [Não publicado]
 
+## [0.3.0] — 2026-10-29 · Cadastros
+
 ### Adicionado
 
 - Padrões de cobrança (F-02): taxa horária padrão e política de arredondamento, com exemplo ao vivo do valor de 1h07.
@@ -24,12 +26,19 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 ### Alterado
 
 - Rótulos ficam 12 px acima dos campos em todos os formulários (antes, 8 px).
+- O rodapé do menu mostra a versão atual (antes, "v0.1" fixo).
+
+### Removido
+
+- "Excluir conta" no Perfil: quem sai é desativado pelo administrador, e o histórico mantém o autor de cada mudança (A-15).
 
 ### Segurança
 
 - Taxa horária limitada a R$ 100.000,00; valores maiores davam erro 500 em vez de erro de validação (A-11).
 - Dois cadastros de cliente com o mesmo nome ao mesmo tempo mostram erro no campo em vez de erro 500 (A-12).
 - Excluir um cliente deixa só o nome no histórico, sem CPF, e-mail ou endereço.
+- Trocar ou redefinir a senha anula um desafio de 2FA aberto com a senha antiga (A-13).
+- A lista de clientes esconde a razão social ou o nome completo de quem não pode ver dados fiscais (A-14).
 
 ## [0.2.0] — 2026-10-29 · Acesso
 

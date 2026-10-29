@@ -2,7 +2,6 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Livewire\Livewire;
 
 it('checks one hash and builds none for an unknown email, like a known one — login timing', function () {
     $user = User::factory()->create();
@@ -37,29 +36,4 @@ it('ignores forwarded addresses from untrusted peers', function () {
     $this->withServerVariables(['REMOTE_ADDR' => '192.0.2.7', 'HTTP_X_FORWARDED_FOR' => '203.0.113.9'])
         ->post(route('password.email'), ['email' => 'b@example.test'])
         ->assertStatus(429);
-});
-
-it('does not let the last active administrator delete their account — RN-17', function () {
-    $admin = User::factory()->admin()->create();
-    $this->actingAs($admin);
-
-    Livewire::test('pages::settings.delete-user-modal')
-        ->set('password', 'password')
-        ->call('deleteUser')
-        ->assertHasErrors(['password']);
-
-    expect($admin->fresh())->not->toBeNull();
-});
-
-it('lets an administrator delete their account while another one remains', function () {
-    User::factory()->admin()->create();
-    $admin = User::factory()->admin()->create();
-    $this->actingAs($admin);
-
-    Livewire::test('pages::settings.delete-user-modal')
-        ->set('password', 'password')
-        ->call('deleteUser')
-        ->assertHasNoErrors();
-
-    expect($admin->fresh())->toBeNull();
 });

@@ -11,6 +11,7 @@ use App\Models\Client;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;
@@ -47,6 +48,7 @@ class ClientsIndex extends Component
     {
         $current = app(ClientRepository::class)->ratesOn(self::today());
         $default = app(ProviderProfileRepository::class)->billingDefaults();
+        $seesFiscalData = Gate::allows('client.fiscal.view');
         $rows = [];
 
         foreach (Client::query()->where('active', $this->status !== 'inactive')->orderBy('name')->get() as $model) {
@@ -57,7 +59,8 @@ class ClientsIndex extends Component
                 'id' => $model->id,
                 'name' => $client->name,
                 'color' => $client->color->value,
-                'legalName' => $client->legalName,
+                // An individual's full name is personal data, like the CPF (F-03, Privacidade).
+                'legalName' => $seesFiscalData ? $client->legalName : '',
                 'taxId' => $client->taxId?->formatted() ?? '',
                 'rate' => ($rate === null ? $default->rate : $rate->rate)->perHour->formatted(),
                 'isDefaultRate' => $rate === null,

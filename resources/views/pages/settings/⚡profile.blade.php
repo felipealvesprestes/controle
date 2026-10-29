@@ -78,13 +78,6 @@ new #[Title('Profile settings')] class extends Component {
     {
         return Auth::user() instanceof MustVerifyEmail && ! Auth::user()->hasVerifiedEmail();
     }
-
-    #[Computed]
-    public function showDeleteUser(): bool
-    {
-        return ! Auth::user() instanceof MustVerifyEmail
-            || (Auth::user() instanceof MustVerifyEmail && Auth::user()->hasVerifiedEmail());
-    }
 }; ?>
 
 <section class="w-full">
@@ -138,10 +131,4 @@ new #[Title('Profile settings')] class extends Component {
         </form>
 
     </x-pages::settings.layout>
-
-    @if ($this->showDeleteUser)
-        <x-pages::settings.layout :heading="__('Delete account')" :subheading="__('Delete your account and all of its resources')">
-            <livewire:pages::settings.delete-user-form />
-        </x-pages::settings.layout>
-    @endif
 </section>

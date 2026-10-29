@@ -16,6 +16,12 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
+    | Version shown in the sidebar footer. Bump it when a roadmap version closes.
+    */
+
+    'version' => '0.3.0',
+
+    /*
     |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------

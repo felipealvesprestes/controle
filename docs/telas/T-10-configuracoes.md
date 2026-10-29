@@ -49,4 +49,4 @@ Agrupar tudo que se configura raramente. Cada item abre uma subpágina.
 | Certificado A1 | F-12 | Envio, validade, teste em homologação |
 | Pró-labore e folha | F-14 | Tabela mês a mês |
 | Importar planilha | F-07 | Envio, prévia, confirmação |
-| Perfil, 2FA, Aparência | F-01 | Páginas existentes do starter kit, traduzidas |
+| Perfil, 2FA, Aparência | F-01 | Páginas existentes do starter kit, traduzidas; o Perfil não tem "Excluir conta" (A-15) |
