@@ -9,6 +9,7 @@ use App\Domain\Access\InvitationSender;
 use App\Domain\Access\PermissionCatalog;
 use App\Domain\Access\PermissionProvider;
 use App\Domain\Access\SessionTerminator;
+use App\Domain\Category\CategoryPermissions;
 use App\Domain\Client\ClientPermissions;
 use App\Domain\Dashboard\DashboardPermissions;
 use App\Domain\Provider\ProviderPermissions;
@@ -37,6 +38,7 @@ class AccessServiceProvider extends ServiceProvider
         DashboardPermissions::class,
         ProviderPermissions::class,
         ClientPermissions::class,
+        CategoryPermissions::class,
     ];
 
     /**

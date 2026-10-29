@@ -19,6 +19,7 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 - Inativar, reativar e excluir cliente, com histórico de todas as alterações.
 - Grupo Cadastros no menu e permissões próprias para ver CPF/CNPJ e endereço, ver e alterar taxas, alterar, inativar e excluir clientes.
 - O passo "Primeiro cliente e taxa" do Painel passa a valer e leva à lista.
+- Categorias (F-04): Desenvolvimento, Reunião, Bugfix, Planejamento e Outros criadas pelo seeder; criar, renomear, mudar a cor, marcar como não faturável (RN-12), reordenar arrastando ou pelos botões, inativar, reativar e excluir, com histórico.
 
 ### Alterado
 

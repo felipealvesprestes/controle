@@ -99,11 +99,11 @@ Tabela do starter kit, com colunas adicionais:
 
 | Coluna | Tipo | Observação |
 |---|---|---|
-| name | string | Único |
-| color | string | |
+| name | string(40), único | |
+| color | string | Uma das 8 cores de `Color` |
 | billable | bool | RN-12 |
 | active | bool | RN-13 |
-| sort_order | int | Ordem nas listas |
+| sort_order | int | Ordem nas listas; renumerada 1, 2, 3… ao reordenar |
 
 ### time_entries — [F-05](../funcionalidades/F-05-lancamentos-de-horas.md), [F-06](../funcionalidades/F-06-cronometro.md)
 

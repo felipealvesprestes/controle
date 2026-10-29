@@ -98,12 +98,17 @@
                         <div class="my-3 border-t border-line"></div>
                     @endcan
 
-                    @can('client.menu')
+                    @canany(['client.menu', 'category.menu'])
                         <p class="px-6 pt-2 pb-1.5 text-sm font-medium text-ink">{{ __('Records') }}</p>
-                        <x-ui.nav-item :href="route('clients.index')" icon="briefcase">{{ __('Clients') }}</x-ui.nav-item>
+                        @can('client.menu')
+                            <x-ui.nav-item :href="route('clients.index')" icon="briefcase">{{ __('Clients') }}</x-ui.nav-item>
+                        @endcan
+                        @can('category.menu')
+                            <x-ui.nav-item :href="route('categories.index')" icon="tag">{{ __('Categories') }}</x-ui.nav-item>
+                        @endcan
 
                         <div class="my-3 border-t border-line"></div>
-                    @endcan
+                    @endcanany
 
                     @can('access.manage')
                         <p class="px-6 pt-2 pb-1.5 text-sm font-medium text-ink">{{ __('Administration') }}</p>

@@ -4,6 +4,7 @@ namespace App\Domain\Client;
 
 use App\Domain\Address\Address;
 use App\Domain\Billing\Rounding\RoundingPolicyType;
+use App\Domain\Shared\Color;
 use App\Domain\Shared\TaxId;
 
 /**
@@ -20,7 +21,7 @@ final readonly class Client
     public function __construct(
         public ?int $id,
         public string $name,
-        public ClientColor $color,
+        public Color $color,
         public ?RoundingPolicyType $roundingPolicy = null,
         public string $legalName = '',
         public ?TaxId $taxId = null,

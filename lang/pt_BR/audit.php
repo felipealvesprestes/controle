@@ -28,4 +28,12 @@ return [
         'reactivated' => 'Cliente reativado',
         'deleted' => 'Cliente excluído',
     ],
+    'category' => [
+        'created' => 'Categoria criada',
+        'updated' => 'Categoria alterada',
+        'moved' => 'Categoria reordenada',
+        'deactivated' => 'Categoria inativada',
+        'reactivated' => 'Categoria reativada',
+        'deleted' => 'Categoria excluída',
+    ],
 ];

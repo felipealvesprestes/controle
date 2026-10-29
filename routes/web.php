@@ -21,4 +21,6 @@ require __DIR__.'/admin.php';
 
 require __DIR__.'/clients.php';
 
+require __DIR__.'/categories.php';
+
 require __DIR__.'/settings.php';

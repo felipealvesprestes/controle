@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Domain\Client;
+namespace App\Domain\Shared;
 
 /**
- * The colour that tells clients apart in lists and in the timer (F-03).
+ * The colours that tell clients and categories apart in lists and in the timer (F-03, F-04).
  */
-enum ClientColor: string
+enum Color: string
 {
     case Petrol = 'petrol';
     case Green = 'green';

@@ -55,15 +55,15 @@
     --color-accent-content: var(--color-brand);
     --color-accent-foreground: var(--color-white);
 
-    /* Client colours (F-03): data markers only, never surfaces or buttons. */
-    --color-client-petrol: #0f6b74;
-    --color-client-green: #2f7d4f;
-    --color-client-amber: #a35f00;
-    --color-client-red: #b3261e;
-    --color-client-violet: #6b4fa8;
-    --color-client-blue: #2c5fa8;
-    --color-client-pink: #a8436f;
-    --color-client-slate: #5d6870;
+    /* Client and category colours (F-03, F-04): data markers only, never surfaces or buttons. */
+    --color-tag-petrol: #0f6b74;
+    --color-tag-green: #2f7d4f;
+    --color-tag-amber: #a35f00;
+    --color-tag-red: #b3261e;
+    --color-tag-violet: #6b4fa8;
+    --color-tag-blue: #2c5fa8;
+    --color-tag-pink: #a8436f;
+    --color-tag-slate: #5d6870;
 }
 
 @layer theme {
@@ -88,14 +88,14 @@
         --color-accent-content: var(--color-brand);
         --color-accent-foreground: #0b1d1f;
 
-        --color-client-petrol: #4fb3bb;
-        --color-client-green: #57c088;
-        --color-client-amber: #e0a03c;
-        --color-client-red: #e5566f;
-        --color-client-violet: #a58ae0;
-        --color-client-blue: #6f9de6;
-        --color-client-pink: #e07fa8;
-        --color-client-slate: #a3acb3;
+        --color-tag-petrol: #4fb3bb;
+        --color-tag-green: #57c088;
+        --color-tag-amber: #e0a03c;
+        --color-tag-red: #e5566f;
+        --color-tag-violet: #a58ae0;
+        --color-tag-blue: #6f9de6;
+        --color-tag-pink: #e07fa8;
+        --color-tag-slate: #a3acb3;
     }
 }
 

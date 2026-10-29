@@ -3,9 +3,9 @@
 namespace App\Application\Client;
 
 use App\Domain\Client\Client;
-use App\Domain\Client\ClientColor;
 use App\Domain\Client\ClientRepository;
 use App\Domain\Client\ClientRuleViolation;
+use App\Domain\Shared\Color;
 use App\Domain\Shared\HourlyRate;
 use App\Domain\Shared\Money;
 use DateTimeImmutable;
@@ -45,9 +45,9 @@ final class ClientFields
         return $name;
     }
 
-    public static function color(string $input): ClientColor
+    public static function color(string $input): Color
     {
-        return ClientColor::tryFrom($input) ?? throw new ClientRuleViolation('color', 'Choose a colour.');
+        return Color::tryFrom($input) ?? throw new ClientRuleViolation('color', 'Choose a colour.');
     }
 
     public static function rate(string $input, string $field = 'rate'): HourlyRate

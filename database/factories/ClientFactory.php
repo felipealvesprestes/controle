@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Domain\Client\ClientColor;
+use App\Domain\Shared\Color;
 use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +20,7 @@ class ClientFactory extends Factory
     {
         return [
             'name' => fake()->unique()->lexify('Client ????'),
-            'color' => ClientColor::Petrol->value,
+            'color' => Color::Petrol->value,
         ];
     }
 

@@ -51,7 +51,7 @@
                             <tr class="transition-colors hover:bg-zinc-50 dark:hover:bg-white/5" wire:key="client-{{ $row['id'] }}">
                                 <td class="px-6 py-3">
                                     <span class="flex items-center gap-2.5">
-                                        <x-ui.client-dot :color="$row['color']" />
+                                        <x-ui.color-dot :color="$row['color']" />
                                         <a href="{{ route('clients.show', $row['id']) }}" wire:navigate class="font-medium text-brand hover:underline">{{ $row['name'] }}</a>
                                         @unless ($row['fiscalComplete'])
                                             <span class="inline-flex items-center gap-1 text-xs text-muted sm:hidden"><flux:icon.exclamation-triangle variant="micro" class="text-warning" />{{ __('fiscal') }}</span>

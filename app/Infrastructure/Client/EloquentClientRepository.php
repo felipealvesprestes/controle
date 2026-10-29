@@ -5,10 +5,10 @@ namespace App\Infrastructure\Client;
 use App\Domain\Address\Address;
 use App\Domain\Billing\Rounding\RoundingPolicyType;
 use App\Domain\Client\Client;
-use App\Domain\Client\ClientColor;
 use App\Domain\Client\ClientRate;
 use App\Domain\Client\ClientRepository;
 use App\Domain\Client\RateSchedule;
+use App\Domain\Shared\Color;
 use App\Domain\Shared\HourlyRate;
 use App\Domain\Shared\Money;
 use App\Domain\Shared\TaxId;
@@ -112,7 +112,7 @@ final class EloquentClientRepository implements ClientRepository
         return new Client(
             id: $model->id,
             name: $model->name,
-            color: ClientColor::from($model->color),
+            color: Color::from($model->color),
             roundingPolicy: $model->rounding_policy === null ? null : RoundingPolicyType::from($model->rounding_policy),
             legalName: $model->legal_name,
             taxId: $model->document === null ? null : TaxId::fromInput($model->document),
