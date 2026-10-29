@@ -48,7 +48,7 @@ Base técnica e visual sobre a qual todo o resto é construído.
 - [x] [F-01 Acesso e segurança](funcionalidades/F-01-acesso-e-seguranca.md): convite por e-mail, desativação
 - [x] Componente `ui.guarded-content` (os demais elementos usam `@can`)
 - [x] Navegação sem recarregar a página: barra e menu persistem entre telas, sem baixar o CSS de novo
-- [ ] Auditoria `quick` do diff da v0.1 + v0.2
+- [x] Auditoria `quick` do diff da v0.1 + v0.2 (run-2: A-08 a A-10 corrigidos)
 
 ### v0.3 — Cadastros · 📋 Planejado
 

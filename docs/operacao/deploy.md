@@ -41,6 +41,10 @@ flowchart LR
 
 O volume `data` guarda `storage/app/private` (XML/PDF das notas, certificado). O banco fica no MySQL gerenciado.
 
+### IP real do cliente
+
+O app só vê o `cloudflared` como origem. Defina `TRUSTED_PROXIES` com o endereço (ou CIDR da rede Docker) do container `cloudflared`, para que os limites por cliente (login, "esqueci a senha", convite) usem o `X-Forwarded-For` enviado por ele (A-09). Nunca use `*`.
+
 ### Cache dos arquivos estáticos
 
 Os arquivos de `public/build/` têm hash no nome; o Caddy deve servi-los com `Cache-Control: public, max-age=31536000, immutable`, e a Cloudflare os mantém em cache. Assim, a primeira tela baixa CSS e JS uma vez e as navegações seguintes (via `wire:navigate`) buscam só o HTML da página.

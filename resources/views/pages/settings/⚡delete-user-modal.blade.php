@@ -2,6 +2,7 @@
 
 use App\Concerns\PasswordValidationRules;
 use App\Livewire\Actions\Logout;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -18,6 +19,15 @@ new class extends Component {
         $this->validate([
             'password' => $this->currentPasswordRules(),
         ]);
+
+        // RN-17: the last active administrator cannot leave the system without one.
+        $user = Auth::user();
+
+        if ($user?->is_admin && User::query()->where('is_admin', true)->where('active', true)->count() <= 1) {
+            $this->addError('password', __('The system must keep at least one active administrator.'));
+
+            return;
+        }
 
         tap(Auth::user(), $logout(...))->delete();
 

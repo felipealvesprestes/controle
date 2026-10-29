@@ -32,6 +32,9 @@ Mudanças visíveis para quem usa o sistema, por versão. Formato baseado em [Ke
 - Link de redefinição de senha sempre usa o endereço oficial do sistema (A-04).
 - Gerenciar usuários e perfis exige senha recente; desativar um usuário encerra as sessões dele (RN-19).
 - Login recusa contas desativadas com a mesma mensagem de credencial inválida.
+- Login leva o mesmo tempo para e-mail existente ou não (A-08).
+- Limites por cliente usam o IP real atrás do proxy configurado em `TRUSTED_PROXIES` (A-09).
+- O último administrador ativo não pode excluir a própria conta (A-10).
 - "Esqueci a senha" responde igual para qualquer e-mail e limita 5 pedidos por minuto (A-05).
 
 ### Adicionado

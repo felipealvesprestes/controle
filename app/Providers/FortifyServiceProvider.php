@@ -9,6 +9,7 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
@@ -57,16 +58,24 @@ class FortifyServiceProvider extends ServiceProvider
     }
 
     /**
+     * A hash with the configured cost, made once and reused, compared when the email has no account.
+     */
+    private function dummyPasswordHash(): string
+    {
+        return Cache::rememberForever('auth.dummy_password_hash', fn (): string => Hash::make(Str::random(32)));
+    }
+
+    /**
      * Configure Fortify actions.
      */
     private function configureActions(): void
     {
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
-        // Only active accounts sign in (RN-19). The hash is always checked so timing does not reveal accounts.
+        // Only active accounts sign in (RN-19). Exactly one hash check runs for known and unknown emails, so timing does not reveal accounts.
         Fortify::authenticateUsing(function (Request $request): ?User {
             $user = User::query()->where('email', $request->string(Fortify::username())->lower()->toString())->first();
-            $valid = Hash::check($request->string('password')->toString(), $user->password ?? Hash::make(Str::random(32)));
+            $valid = Hash::check($request->string('password')->toString(), $user->password ?? $this->dummyPasswordHash());
 
             return $valid && $user !== null && $user->active ? $user : null;
         });
