@@ -164,6 +164,7 @@ describe('company details', function () {
         'missing legal name' => [['legalName' => '   '], 'legalName'],
         'invalid CNPJ check digits' => [['cnpj' => '11.222.333/0001-82'], 'cnpj'],
         'long trade name' => [['tradeName' => str_repeat('a', 256)], 'tradeName'],
+        'missing municipal registration' => [['municipalRegistration' => ' '], 'municipalRegistration'],
         'municipal registration with symbols' => [['municipalRegistration' => '12<script>'], 'municipalRegistration'],
         'unknown state, typed without CEP' => [['state' => 'XX', 'zipCode' => ''], 'state'],
         'short CEP' => [['zipCode' => '9201'], 'zipCode'],

@@ -52,7 +52,11 @@ final class UpdateCompanyDetails
             throw new ProviderRuleViolation('cnpj', 'Enter a valid CNPJ.');
         }
 
-        if ($text['municipalRegistration'] !== '' && preg_match('/^[0-9A-Za-z.\/-]+$/', $text['municipalRegistration']) !== 1) {
+        if ($text['municipalRegistration'] === '') {
+            throw new ProviderRuleViolation('municipalRegistration', 'Enter the municipal registration.');
+        }
+
+        if (preg_match('/^[0-9A-Za-z.\/-]+$/', $text['municipalRegistration']) !== 1) {
             throw new ProviderRuleViolation('municipalRegistration', 'Use only letters, digits, dots, slashes and hyphens.');
         }
 

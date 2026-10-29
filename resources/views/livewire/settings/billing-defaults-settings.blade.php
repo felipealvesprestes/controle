@@ -11,17 +11,17 @@
 
             <form wire:submit="save" class="mt-5 space-y-6">
                 @can('settings.billing.rate.view')
-                    <flux:input
-                        wire:model.live.debounce.300ms="rate"
-                        :label="__('Default hourly rate')"
-                        :description="__('In reais, such as 60,00.')"
-                        prefix="R$"
-                        inputmode="decimal"
-                        autocomplete="off"
-                        class="max-w-48"
-                        :disabled="! auth()->user()->can('settings.billing.edit')"
-                        data-test="rate-input"
-                    />
+                    <flux:input.group :label="__('Default hourly rate')" :description="__('In reais, such as 60,00.')" class="max-w-56">
+                        <flux:input.group.prefix>R$</flux:input.group.prefix>
+                        <flux:input
+                            wire:model.live.debounce.300ms="rate"
+                            inputmode="decimal"
+                            autocomplete="off"
+                            class="num"
+                            :disabled="! auth()->user()->can('settings.billing.edit')"
+                            data-test="rate-input"
+                        />
+                    </flux:input.group>
                 @else
                     <div>
                         <p class="text-sm font-medium text-ink">{{ __('Default hourly rate') }}</p>

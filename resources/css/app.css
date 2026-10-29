@@ -132,3 +132,9 @@ select:focus[data-flux-control] {
         animation-duration: 0.01ms !important;
     }
 }
+
+/* Labels breathe above text inputs and selects: Flux spaces them 8px apart, which reads as glued (2026-10-29).
+   Flux pins the label margin to 0 with !important, so the space comes from the field's row gap. */
+[data-flux-field]:has(> [data-flux-input], > [data-flux-input-group], > [data-flux-select-native]) {
+    row-gap: 0.75rem;
+}

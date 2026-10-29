@@ -104,6 +104,8 @@ Tema escuro: mesmos tokens com valores próprios, fundo `#15171a`, superfície `
 - Raio: **6–8 px** em controles e painéis; pílulas totalmente arredondadas só em selos e no item ativo do menu (lado direito).
 - Sombra só em camadas sobrepostas (menus, painel lateral, diálogos). Conteúdo é separado por borda, não por sombra.
 - Grade de 4 px. Linha de tabela: 36 px (desktop), 48 px (toque).
+- Formulários: rótulo 12 px acima do campo (regra em `resources/css/app.css`, porque o Flux usa 8 px), 24 px entre linhas de campos e 20 px entre colunas. Em grades, a largura (`col-span`) vai num `div` em volta do `flux:input`: a classe passada ao componente cai no `<input>`, não no campo.
+- Indicador de carregamento fica dentro do campo (o do próprio Flux com `wire:model.live`); nada aparece ou some abaixo dele empurrando o layout.
 - Ícones de traço fino (1,5 px), 18 px, sempre com rótulo visível ou `aria-label`.
 
 ## Contra a "cara de IA"

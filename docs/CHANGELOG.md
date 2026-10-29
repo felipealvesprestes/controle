@@ -9,10 +9,14 @@ As versões abaixo de 1.0 são marcos internos do [roadmap](ROADMAP.md); nenhuma
 ### Adicionado
 
 - Padrões de cobrança (F-02): taxa horária padrão e política de arredondamento, com exemplo ao vivo do valor de 1h07.
-- Dados da empresa (F-02): razão social, nome fantasia, CNPJ (numérico ou alfanumérico), inscrição municipal e endereço.
+- Dados da empresa (F-02): razão social, nome fantasia, CNPJ (numérico ou alfanumérico), inscrição municipal (obrigatória; sem inscrição estadual) e endereço.
 - Grupo Configurações no menu, com permissões próprias para ver a taxa e para alterar cada tela.
 - O passo "Dados da empresa" do Painel passa a valer e leva à tela.
 - Endereço preenchido pelo CEP (ViaCEP): logradouro, bairro, cidade e UF, com aviso quando o CEP não existe ou a busca não responde (ADR-0013).
+
+### Alterado
+
+- Rótulos ficam 12 px acima dos campos em todos os formulários (antes, 8 px).
 
 ### Segurança
 

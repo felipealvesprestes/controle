@@ -22,7 +22,7 @@ Guardar os padrões de cobrança e os dados da empresa usados no relatório e na
 Seções da tela:
 
 1. **Cobrança** (`/settings/billing`): taxa horária padrão (R$, de 0,01 a 100.000,00), política de arredondamento padrão (Período, Lançamento, Exato) com exemplo ao vivo calculado pelo domínio ("1h07 → 5 pontos → R$ 75,00").
-2. **Empresa** (`/settings/company`): razão social e CNPJ obrigatórios; nome fantasia, inscrição municipal e endereço (CEP, logradouro, número, complemento, bairro, cidade, UF). Regime tributário fixo em Simples Nacional — ME/EPP. Ao completar os 8 dígitos do CEP, logradouro, bairro, cidade e UF são preenchidos pela ViaCEP ([ADR-0013](../arquitetura/adr/0013-busca-de-cep.md)); número e complemento ficam como estão. CEP inexistente ou serviço fora do ar mostram um aviso no campo, sem apagar o que foi digitado.
+2. **Empresa** (`/settings/company`): razão social, CNPJ e inscrição municipal obrigatórios (prestador de serviço não tem inscrição estadual, e o sistema não pede); nome fantasia e endereço (CEP, logradouro, número, complemento, bairro, cidade, UF). Regime tributário fixo em Simples Nacional — ME/EPP. Ao completar os 8 dígitos do CEP, logradouro, bairro, cidade e UF são preenchidos pela ViaCEP ([ADR-0013](../arquitetura/adr/0013-busca-de-cep.md)); número e complemento ficam como estão. CEP inexistente ou serviço fora do ar mostram um aviso no campo, sem apagar o que foi digitado.
 3. **Nota fiscal** (v1.1): código de tributação nacional, código NBS, CNAE, texto base da descrição da nota com variáveis (`{cliente}`, `{mes}`, `{horas}`).
 4. **Certificado** (v1.2): envio do A1, validade e status.
 
@@ -33,7 +33,7 @@ Seções da tela:
 - [x] O exemplo de arredondamento atualiza conforme a política e a taxa digitadas.
 - [x] Toda alteração fica no histórico de auditoria (quem, quando, antes, depois).
 - [x] O CEP preenche logradouro, bairro, cidade e UF e leva o cursor ao número.
-- [x] O Painel marca "Dados da empresa" como feito quando razão social e CNPJ estão preenchidos.
+- [x] O Painel marca "Dados da empresa" como feito quando razão social, CNPJ e inscrição municipal estão preenchidos.
 
 ## Segurança
 

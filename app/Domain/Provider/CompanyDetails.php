@@ -25,11 +25,11 @@ final readonly class CompanyDetails
     ) {}
 
     /**
-     * Enough to identify the provider on a report: legal name and CNPJ.
+     * Enough to identify the provider on a report and on the invoice: legal name, CNPJ and municipal registration.
      */
     public function isComplete(): bool
     {
-        return $this->legalName !== '' && $this->cnpj !== null;
+        return $this->legalName !== '' && $this->cnpj !== null && $this->municipalRegistration !== '';
     }
 
     /**
