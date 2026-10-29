@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | 🚧 Em andamento (falta "Ver como") |
+| **Status** | ✅ Implementada (v0.2) |
 | **Versão** | v0.2 |
 | **Telas** | T-12, T-13 |
 | **Regras** | RN-15 a RN-20 |
@@ -51,7 +51,6 @@ O catálogo completo é gerado pelo sistema e exibido na tela T-13; esta tabela 
 - **Usuários (T-12):** lista com nome, e-mail, perfis, status, último acesso. Criar envia convite por e-mail com link para definir senha. Desativar bloqueia o login imediatamente.
 - **Perfis (T-13):** árvore do catálogo agrupada por **módulo → tela → tipo de elemento**, com marcação por item ou por grupo. Ao marcar um item, as dependências são marcadas junto (e mostradas).
 - **Exceções:** na ficha do usuário, cada permissão mostra o estado efetivo e a origem ("pelo perfil Colaborador", "permitido para este usuário", "negado para este usuário").
-- **Ver como** (pendente): o administrador abre uma pré-visualização somente leitura da navegação e das telas com as permissões do usuário.
 - **Conteúdo sem permissão:** textos do tipo `content` são substituídos por `•••` com dica "Sem permissão para ver"; menus, páginas, botões e campos sem permissão não são renderizados.
 - **Histórico:** toda mudança em usuário, perfil ou exceção fica registrada (quem, quando, antes, depois).
 
@@ -63,9 +62,9 @@ O catálogo completo é gerado pelo sistema e exibido na tela T-13; esta tabela 
 - [x] Toda chave usada no código existe no catálogo — verificado por teste automatizado.
 - [x] Mudança de permissão vale na próxima requisição do usuário afetado (cache só dentro da requisição).
 - [x] Toda permissão nova no código aparece desmarcada em todos os perfis (RN-15): o banco guarda só atribuições.
-- [ ] "Ver como" abre a navegação do usuário em modo somente leitura.
 
 ## Fora de escopo
 
+- **Ver como** (movido para o [backlog](../ROADMAP.md#backlog-sem-versão) em 2026-10-29): pré-visualização somente leitura da navegação e das telas com as permissões do usuário. A aba Permissões da ficha já mostra o estado efetivo e a origem de cada item.
 - Multiempresa (vários prestadores independentes no mesmo sistema).
 - Permissões por registro individual (ex.: "só o cliente X"). Pode virar o tipo `scope` com parâmetro no futuro.

@@ -31,7 +31,7 @@ Usuários                                        [+ CONVIDAR USUÁRIO] [↻]
 
 ```
 Administração › Usuários › Ana Souza
-Ana Souza  ● Ativo                       [VER COMO] [DESATIVAR] [⋮]
+Ana Souza  ● Ativo                                  [DESATIVAR] [⋮]
 [ Detalhes ]  Permissões   Histórico
 ──────────────────────────────────────────────────────────────────────
 Nome            Ana Souza
@@ -54,10 +54,13 @@ Aba Permissões
 | Elemento | Comportamento |
 |---|---|
 | Convidar | Painel lateral: nome, e-mail, perfis. Envia o convite |
-| Ver como | Abre a navegação com as permissões do usuário, em modo somente leitura e com faixa "Visualizando como Ana Souza" |
 | `[▾]` em cada permissão | Herdar do perfil · Permitir para este usuário · Negar para este usuário |
 | Desativar | Confirmação; bloqueado se for o último administrador ativo (RN-17) |
 | Histórico | Registro de auditoria do usuário (RN-20) |
+
+## Backlog
+
+- **Ver como:** abriria a navegação com as permissões do usuário, em modo somente leitura e com a faixa "Visualizando como Ana Souza". Fora da v0.2; ver [F-17](../funcionalidades/F-17-usuarios-e-permissoes.md#fora-de-escopo).
 
 ## Celular
 

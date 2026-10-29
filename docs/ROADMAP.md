@@ -1,6 +1,6 @@
 # Roadmap
 
-Atualizado em 2026-10-28.
+Atualizado em 2026-10-29.
 
 A segurança acompanha todas as versões ([seguranca/](seguranca/README.md)) e tem uma etapa própria, a **v0.9**, que funciona como portão: nada vai para a web sem passar por ela.
 
@@ -41,10 +41,9 @@ Base técnica e visual sobre a qual todo o resto é construído.
 - [x] Tokens visuais e app shell no estilo console (referência: telas do GCP) ([linguagem-visual.md](design/linguagem-visual.md))
 - [x] Login traduzido e sem cadastro público ([F-01](funcionalidades/F-01-acesso-e-seguranca.md))
 
-### v0.2 — Acesso · 🚧 Em andamento
+### v0.2 — Acesso · ✅ Concluída
 
 - [x] [F-17 Usuários e permissões](funcionalidades/F-17-usuarios-e-permissoes.md): catálogo, perfis, exceções, auditoria
-- [ ] F-17 "Ver como": pré-visualização da navegação com as permissões do usuário (hoje a aba Permissões mostra o estado efetivo e a origem de cada item)
 - [x] [F-01 Acesso e segurança](funcionalidades/F-01-acesso-e-seguranca.md): convite por e-mail, desativação
 - [x] Componente `ui.guarded-content` (os demais elementos usam `@can`)
 - [x] Navegação sem recarregar a página: barra e menu persistem entre telas, sem baixar o CSS de novo
@@ -132,6 +131,7 @@ Marco: a planilha deixa de ser usada.
 | — | Despesas reembolsáveis no período |
 | — | Login por passkey |
 | — | Permissão por registro (ex.: usuário só vê o cliente X) |
+| [F-17](funcionalidades/F-17-usuarios-e-permissoes.md) | "Ver como": pré-visualização somente leitura da navegação com as permissões de outro usuário (hoje a aba Permissões mostra o estado efetivo e a origem de cada item) |
 | — | Mutation testing (Infection) |
 
 ## Fora do escopo

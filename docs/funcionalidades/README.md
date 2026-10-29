@@ -4,7 +4,7 @@ Uma página por funcionalidade, criada a partir de [_templates/funcionalidade.md
 
 | ID | Funcionalidade | Versão | Status | Telas |
 |---|---|---|---|---|
-| [F-01](F-01-acesso-e-seguranca.md) | Acesso e segurança | v0.1 / v0.2 | 📋 Planejado | T-01, T-10, T-12 |
+| [F-01](F-01-acesso-e-seguranca.md) | Acesso e segurança | v0.1 / v0.2 / v1.0 | 🚧 Em andamento | T-01, T-10, T-12 |
 | [F-02](F-02-configuracoes-do-prestador.md) | Configurações do prestador | v0.3 | 📋 Planejado | T-10 |
 | [F-03](F-03-clientes-e-taxas.md) | Clientes e taxas | v0.3 | 📋 Planejado | T-08 |
 | [F-04](F-04-categorias.md) | Categorias | v0.3 | 📋 Planejado | T-09 |
@@ -20,4 +20,4 @@ Uma página por funcionalidade, criada a partir de [_templates/funcionalidade.md
 | [F-14](F-14-fator-r-e-impostos.md) | Fator R e estimativa de impostos | v1.3 | 📋 Planejado | T-07 |
 | [F-15](F-15-lembretes.md) | Lembretes | backlog | 💡 Ideia | — |
 | [F-16](F-16-integracao-linear.md) | Integração com o Linear | backlog | 💡 Ideia | T-04 |
-| [F-17](F-17-usuarios-e-permissoes.md) | Usuários e permissões | v0.2 | 📋 Planejado | T-12, T-13 |
+| [F-17](F-17-usuarios-e-permissoes.md) | Usuários e permissões | v0.2 | ✅ Implementada (v0.2) | T-12, T-13 |

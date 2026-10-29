@@ -17,8 +17,8 @@ As telas T-01 a T-11 trazem o wireframe da versão de celular (390 px), onde o u
 | [T-09](T-09-categorias.md) | Categorias | `/categories` | F-04 | 📋 Planejado |
 | [T-10](T-10-configuracoes.md) | Configurações | `/settings` | F-01, F-02, F-07, F-12, F-14 | 📋 Planejado |
 | [T-11](T-11-relatorio-publico.md) | Relatório público | `/r/{token}` | F-13 | 💡 Ideia |
-| [T-12](T-12-usuarios.md) | Usuários | `/admin/users` | F-01, F-17 | 📋 Planejado |
-| [T-13](T-13-perfis-de-acesso.md) | Perfis de acesso | `/admin/roles` | F-17 | 📋 Planejado |
+| [T-12](T-12-usuarios.md) | Usuários | `/admin/users` | F-01, F-17 | ✅ Implementada (v0.2) |
+| [T-13](T-13-perfis-de-acesso.md) | Perfis de acesso | `/admin/roles` | F-17 | ✅ Implementada (v0.2) |
 
 ## Navegação
 
